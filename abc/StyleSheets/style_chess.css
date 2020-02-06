@@ -1,0 +1,57 @@
+td{
+    width: 200px;
+    }
+#div1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 300px;
+    height: 700px;
+    padding: 10px;
+    overflow: scroll;
+    float: left;
+    color: azure;
+    margin: 0%;
+}
+table{
+    margin-top: 0%;
+    margin-right: 0%;
+    margin-bottom: 0%;
+    margin-right: 20%;
+}
+#Mvs{
+    font-size:larger;
+    color:azure;
+}
+.a{
+    background: rgba(218, 9, 9, 0.781);
+    width: 95px;
+    height: 95px;
+    align-content: center;
+    text-align: center;
+}
+
+.b{
+    background:beige;
+    width: 95px;
+    height: 95px;
+    align-content: center;
+    text-align: center;
+}
+.img{
+    width: 70px;
+    height: 70px;
+    align-self: center;
+}
+::-webkit-scrollbar {
+    width: 0px;  
+    background: transparent;  
+}
+span{
+    color: maroon;
+    font-size: 25px;
+}
+body {
+    background-image: url("../background.png");
+    background-position: center;
+    background-size: cover;
+    font-family: 'Trebuchet MS';
+}
