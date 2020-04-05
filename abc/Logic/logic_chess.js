@@ -75,9 +75,12 @@ function getPositions() {
     }
   };
 
-  xhttp.open("POST", "/api/getboard" + "?code=" + code + "&op=get", true);
+  xhttp.open("POST", "/api/getboard", true);
+  xhttp.setRequestHeader("Content-type", "application/json");
   console.log("sent request for boardb");
-  xhttp.send();
+  xhttp.send( JSON.stringify({
+    "code" : code
+  }));
 }
 
 function sendRequest() {
@@ -95,11 +98,16 @@ function sendRequest() {
   };
   xhttp.open(
     "POST",
-    "/api/setboard?code=" + code + "&op=set&pieces=" + JSON.stringify(pieces),
+    "/api/setboard",
     true
   );
+  xhttp.setRequestHeader("Content-type", "application/json");
+  //?code=" + code + "&op=set&pieces=" + JSON.stringify(pieces),
   //alert(JSON.stringify(pieces));
-  xhttp.send();
+  xhttp.send(JSON.stringify({
+    "code" : code,
+    "pieces" : JSON.stringify(pieces)
+  }));
 }
 
 function checkCheck() {
