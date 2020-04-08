@@ -571,15 +571,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var httpOptions = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-type': "multipart/form-encoded" }) };
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
+        this.optionsHeader = { 'Content-type': 'multipart/form-data' };
     }
     UserService.prototype.getAll = function () {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + "/user");
     };
     UserService.prototype.register = function (user) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + "/user/register", user);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + "/user/register", user, httpOptions);
     };
     UserService.prototype.delete = function (id) {
         return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + "/user/" + id);
