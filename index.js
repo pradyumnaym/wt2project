@@ -25,7 +25,6 @@ app.use(express.json());
 var isMultipart = /^multipart\//i;
 app.use(function (req, res, next) {
   var type = req.get('Content-Type');
-  console.log(type);
   if (isMultipart.test(type)){ console.log("yes"); return next(); } 
   return express.urlencoded({ extended: false })(req, res, next);
 });
@@ -33,7 +32,7 @@ app.use(function (req, res, next) {
 
 app.use("/user", user);
 app.use("/api", verifyToken, game);
-app.use("/images", verifyToken, images);
+app.use("/images", images);
 
 function verifyToken(req, res, next) {
   const bearerHeader = req.headers['authorization'];

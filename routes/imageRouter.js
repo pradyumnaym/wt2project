@@ -5,12 +5,12 @@ const ProfilePic = require(path.join("..", "models", "ProfilePic.js"));
 
 
 api.get("/:imgid", (req, res) => {
-  console.log(req.query);
-  ProfilePic.getImageById(req.params.imgid, (err, image) => {
+  ProfilePic.getImageById(req.params.imgid, (err, doc) => {
     if (err) throw err;
+    if(!doc) return res.sendStatus(404);
     res.status(200);
-    res.contentType(image.contentType);
-    res.send(img.data);
+    res.contentType(doc.img.contentType);
+    res.send(doc.img.data);
   });
 });
 

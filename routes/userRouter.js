@@ -1,9 +1,12 @@
 var express = require('express');
 const path = require('path');
 const User = require(path.join("..", "models", "User.js"))
+const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
 var router = express.Router();
 const jwt = require('jsonwebtoken');
 const formidable = require('formidable')
+var fs = require("fs")
+
 
 
 router.post("/login", (req, res)=>{
@@ -31,33 +34,22 @@ router.post("/logout", (req, res)=>{
 });
 
 router.post("/register", (req, res)=>{
-    //if(req.body.user.image) add the imageurl attribute
-    // User.addUser(req.body.user, (err, user)=>{
-    //     if(err) {res.status(405).json({err});}
-    //     else {
-    //         //console.log(user["_id"])
-    //         res.status(200).json(user);
-    //     }
-    // });
-    
-    console.log("yes_route");
     //console.log(req);
-    new formidable.IncomingForm().parse(req)
-    .on('field', (name, field) => {
-      console.log('Field', name, field)
-    })
-    .on('file', (name, file) => {
-      console.log('Uploaded file', name, file)
-    })
-    .on('aborted', () => {
-      console.error('Request aborted by the user')
-    })
-    .on('error', (err) => {
-      console.error('Error', err)
-      throw err
-    })
-    .on('end', () => {
-      res.end()
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        throw err
+      }
+      newuser = fields;
+      img = fs.readFileSync(files['file'].path) 
+      type = files['file'].type
+      ProfilePic.addImage(img, type, id =>{
+        newuser['img'] = id;
+
+        User.addUser(newuser, (err, nuser)=>{
+          if(err) res.status(400).json(err);
+          else res.status(200).json(nuser);
+        })
+      })
     })
 });
 

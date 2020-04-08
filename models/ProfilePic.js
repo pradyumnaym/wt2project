@@ -11,7 +11,7 @@ var Image = (module.exports = mongoose.model("ProfilePic", ImageSchema));
 module.exports.addImage = (image, type, callback) => {
   var i = new Image;
   i.img.data = image;
-  i.img.type = type;
+  i.img.contentType = type;
   i.save((err, img)  => {
     if (err) throw err;
     callback(img["_id"]);

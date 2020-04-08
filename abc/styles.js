@@ -329,7 +329,7 @@ module.exports = exported;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/anushkini/Desktop/wt2project/angular-gaming/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /home/pradyumna/wt_angular_app/node/angular-gaming/src/styles.css */"./src/styles.css");
 
 
 /***/ })

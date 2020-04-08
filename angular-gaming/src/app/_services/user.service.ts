@@ -14,13 +14,15 @@ export class UserService {
         return this.http.get<any[]>(`${environment.apiUrl}/user`);
     }
 
-    register(user) {
+    register(form, file) {
         var fd = new FormData();
-        var newuser = {
-          
-        }
-        fd.append('user')
-        return this.http.post<any>(`${environment.apiUrl}/user/register`, user, httpOptions);
+        console.log(form);
+        fd.append("username", form.value.username);
+        fd.append("password", form.value.password);
+        fd.append("firstname", form.value.firstname);
+        fd.append("lastname", form.value.lastname);
+        fd.append("file", file);
+        return this.http.post<any>(`${environment.apiUrl}/user/register`, fd);
     }
 
     delete(id) {
