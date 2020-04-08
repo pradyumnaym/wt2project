@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const user = require(path.join(__dirname, "routes", "userRouter.js"));
 const game = require(path.join(__dirname, "routes", "gameRouter.js"));
-const images = require(path.join(__dirname, "routes", "ImageRouter.js"))
+const images = require(path.join(__dirname, "routes", "imageRouter.js"))
 
 mongoose.connect(
   "mongodb+srv://pradyumnaym:password@123@cluster0-rmlwr.mongodb.net/test?retryWrites=true&w=majority",
