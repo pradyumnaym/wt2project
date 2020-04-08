@@ -12,8 +12,10 @@ POST http://localhost:4000/user/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "user": {"username" : "y0y0",
-    "password" : "y0y0y0y00y"}
+    "user": {"username" : "y0y09",
+    "password" : "y0y0y0y00y", 
+    "firstname": "pym", 
+    "lastname": "ym"}
 }
 
 ###

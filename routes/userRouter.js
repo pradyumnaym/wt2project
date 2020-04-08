@@ -29,9 +29,13 @@ router.post("/logout", (req, res)=>{
 });
 
 router.post("/register", (req, res)=>{
-    User.addUser(req.body.user, (err, users)=>{
-        if(err) res.status(405).json({});
-        else res.status(200).json(users[0]);
+    //if(req.body.user.image) add the imageurl attribute
+    User.addUser(req.body.user, (err, user)=>{
+        if(err) {res.status(405).json({err});}
+        else {
+            //console.log(user["_id"])
+            res.status(200).json(user);
+        }
     });
 });
 

@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   username: {type : String, required : true, unique : true, dropDups : true},
   password : {type : String, required : true},
+  firstname : {type : String, required : true},
+  lastname : {type : String, required : true},
+  img : {type : String, required : false},
   friend_list: {type : mongoose.Schema.Types.Mixed, required : false},
   achievements: {type : mongoose.Schema.Types.Mixed, required : false}
 });
@@ -14,5 +17,6 @@ module.exports.getUserByUserName = (username, callback) => {
 };
 
 module.exports.addUser = (user, callback) => {
-  User.create([user], callback);
+  var u = new User(user);
+  u.save(callback);
 };

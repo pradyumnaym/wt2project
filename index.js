@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const app = express();
+const jwt = require('jsonwebtoken');
+
 const user = require(path.join(__dirname, "routes", "userRouter.js"));
 const game = require(path.join(__dirname, "routes", "gameRouter.js"));
-const jwt = require('jsonwebtoken');
+const images = require(path.join(__dirname, "routes", "ImageRouter.js"))
 
 mongoose.connect(
   "mongodb+srv://pradyumnaym:password@123@cluster0-rmlwr.mongodb.net/test?retryWrites=true&w=majority",
@@ -14,12 +15,16 @@ mongoose.connect(
   }
 );
 
+
+const app = express();
+
 app.use(express.static("./abc"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/user", user);
 app.use("/api", verifyToken, game);
+app.use("/images", verifyToken, images);
 
 function verifyToken(req, res, next) {
   const bearerHeader = req.headers['authorization'];
