@@ -3,6 +3,8 @@ const path = require('path');
 const User = require(path.join("..", "models", "User.js"))
 var router = express.Router();
 const jwt = require('jsonwebtoken');
+const formidable = require('formidable')
+
 
 router.post("/login", (req, res)=>{
     const givenUser = req.body.user;
@@ -30,13 +32,24 @@ router.post("/logout", (req, res)=>{
 
 router.post("/register", (req, res)=>{
     //if(req.body.user.image) add the imageurl attribute
-    User.addUser(req.body.user, (err, user)=>{
-        if(err) {res.status(405).json({err});}
-        else {
-            //console.log(user["_id"])
-            res.status(200).json(user);
+    // User.addUser(req.body.user, (err, user)=>{
+    //     if(err) {res.status(405).json({err});}
+    //     else {
+    //         //console.log(user["_id"])
+    //         res.status(200).json(user);
+    //     }
+    // });
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+        if (err) {
+          console.error('Error', err)
+          throw err
         }
-    });
+        console.log('Fields', fields)
+        console.log('Files', files)
+        for (const file of Object.entries(files)) {
+          console.log(file)
+        }
+      })
 });
 
 module.exports = router;
