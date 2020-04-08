@@ -6,7 +6,6 @@ const ImageSchema = new mongoose.Schema({
 
 var Image = (module.exports = mongoose.model("ProfilePic", ImageSchema));
 
-
 //source : https://gist.github.com/aheckmann/2408370
 module.exports.addImage = (image, type, callback) => {
   var i = new Image;

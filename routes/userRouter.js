@@ -34,22 +34,29 @@ router.post("/logout", (req, res)=>{
 });
 
 router.post("/register", (req, res)=>{
-    //console.log(req);
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
         throw err
       }
       newuser = fields;
-      img = fs.readFileSync(files['file'].path) 
-      type = files['file'].type
-      ProfilePic.addImage(img, type, id =>{
-        newuser['img'] = id;
+      if(files['file']){
+        img = fs.readFileSync(files['file'].path) 
+        type = files['file'].type
+        ProfilePic.addImage(img, type, id =>{
+          newuser['img'] = id;
 
+          User.addUser(newuser, (err, nuser)=>{
+            if(err) res.status(400).json(err);
+            else res.status(200).json(nuser);
+          })
+        })
+      }else{
         User.addUser(newuser, (err, nuser)=>{
           if(err) res.status(400).json(err);
           else res.status(200).json(nuser);
         })
-      })
+      }
+      
     })
 });
 
