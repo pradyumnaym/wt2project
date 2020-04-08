@@ -39,17 +39,26 @@ router.post("/register", (req, res)=>{
     //         res.status(200).json(user);
     //     }
     // });
-    new formidable.IncomingForm().parse(req, (err, fields, files) => {
-        if (err) {
-          console.error('Error', err)
-          throw err
-        }
-        console.log('Fields', fields)
-        console.log('Files', files)
-        for (const file of Object.entries(files)) {
-          console.log(file)
-        }
-      })
+    
+    console.log("yes_route");
+    //console.log(req);
+    new formidable.IncomingForm().parse(req)
+    .on('field', (name, field) => {
+      console.log('Field', name, field)
+    })
+    .on('file', (name, file) => {
+      console.log('Uploaded file', name, file)
+    })
+    .on('aborted', () => {
+      console.error('Request aborted by the user')
+    })
+    .on('error', (err) => {
+      console.error('Error', err)
+      throw err
+    })
+    .on('end', () => {
+      res.end()
+    })
 });
 
 module.exports = router;
