@@ -20,7 +20,15 @@ const app = express();
 
 app.use(express.static("./abc"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.urlencoded({ extended: false }));
+
+var isMultipart = /^multipart\//i;
+app.use(function (req, res, next) {
+  var type = req.get('Content-Type');
+  if (isMultipart.test(type)) return next();
+  return express.urlencoded({ extended: false })(req, res, next);
+});
+
 
 app.use("/user", user);
 app.use("/api", verifyToken, game);
