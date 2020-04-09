@@ -35,9 +35,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFud
 
 ###
 
-GET http://localhost:4000/images/5e8f2dfe67e2d52130719c8c HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFudXNoIiwiaWF0IjoxNTg2NDQxNzQxLCJleHAiOjE1ODY0NDUzNDF9.yA8gohtr2Dyue__BZbxzndlmEehn4T3sna4w-VG-lmY
+GET http://localhost:4000/images/profilepic HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFudXNoIiwiaW1nIjoiNWU4ZjJkZmU2N2UyZDUyMTMwNzE5YzhjIiwiaWF0IjoxNTg2NDU5NDU0LCJleHAiOjE1ODY0NjMwNTR9._rFSwqj1oebEOrKT2k6VqPi0bDQzlX7L_MJBBKJpfbA
 
 ###
 
 POST http://localhost:4000/user/logout HTTP/1.1
+
+###
+
+GET http://localhost:4000/images/logo/5e8f2dfe67e2d52130719c8c HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFudXNoIiwiaW1nIjoiNWU4ZjJkZmU2N2UyZDUyMTMwNzE5YzhjIiwiaWF0IjoxNTg2NDU5NDU0LCJleHAiOjE1ODY0NjMwNTR9._rFSwqj1oebEOrKT2k6VqPi0bDQzlX7L_MJBBKJpfbA

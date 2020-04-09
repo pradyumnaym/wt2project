@@ -35,6 +35,4 @@ app.use("/user", user);
 app.use("/api", verifyToken, game);
 app.use("/images", images);
 
-
-
 app.listen(4000);

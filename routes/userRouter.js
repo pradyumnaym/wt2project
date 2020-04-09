@@ -17,7 +17,7 @@ router.post("/login", (req, res)=>{
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
         if((usr != null) && (usr.password == givenUser.password)){
-            jwt.sign({username : usr.username}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
+            jwt.sign({username : usr.username, img : usr.img}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
                 res.status(200).json({
                     token
