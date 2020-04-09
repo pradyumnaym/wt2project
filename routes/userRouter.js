@@ -2,10 +2,14 @@ var express = require('express');
 const path = require('path');
 const User = require(path.join("..", "models", "User.js"))
 const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
-var router = express.Router();
 const jwt = require('jsonwebtoken');
-const formidable = require('formidable')
+const formidable = require('formidable');
+const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
+
 var fs = require("fs")
+
+
+var router = express.Router();
 
 
 
@@ -15,7 +19,6 @@ router.post("/login", (req, res)=>{
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
         if((usr != null) && (usr.password == givenUser.password)){
-            console.log(usr);
             jwt.sign({username : usr.username}, "secret_key", {expiresIn: '2h'}, (err, token)=>{
                 if(err) throw err;
                 res.status(200).json({
@@ -30,6 +33,7 @@ router.post("/login", (req, res)=>{
 });
 
 router.post("/logout", (req, res)=>{
+  //nothing to do here... its on the client to delete the token
     return res.status(201);
 });
 
@@ -39,7 +43,7 @@ router.post("/register", (req, res)=>{
         throw err
       }
       newuser = fields;
-      if(files['file']){
+      if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 
         type = files['file'].type
         ProfilePic.addImage(img, type, id =>{
@@ -56,9 +60,17 @@ router.post("/register", (req, res)=>{
           else res.status(200).json(nuser);
         })
       }
-      
     })
 });
 
-module.exports = router;
+router.get("/userdetails", verifyToken,  (req, res) => {
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    console.log(user)
+    var {img, firstname, lastname, username} = user;
+    return res.status(200).json({firstname, lastname, username, img});
+  });
+});
 
+module.exports = router;
