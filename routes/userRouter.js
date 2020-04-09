@@ -11,15 +11,13 @@ var fs = require("fs")
 
 var router = express.Router();
 
-
-
 router.post("/login", (req, res)=>{
     const givenUser = req.body.user;
 
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
         if((usr != null) && (usr.password == givenUser.password)){
-            jwt.sign({username : usr.username}, "secret_key", {expiresIn: '2h'}, (err, token)=>{
+            jwt.sign({username : usr.username}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
                 res.status(200).json({
                     token
@@ -34,7 +32,7 @@ router.post("/login", (req, res)=>{
 
 router.post("/logout", (req, res)=>{
   //nothing to do here... its on the client to delete the token
-    return res.status(201);
+    return res.sendStatus(201);
 });
 
 router.post("/register", (req, res)=>{
@@ -67,7 +65,6 @@ router.get("/userdetails", verifyToken,  (req, res) => {
   User.getUserByUserName(req.user.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
-    console.log(user)
     var {img, firstname, lastname, username} = user;
     return res.status(200).json({firstname, lastname, username, img});
   });

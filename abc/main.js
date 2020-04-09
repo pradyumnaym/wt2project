@@ -582,7 +582,6 @@ var UserService = /** @class */ (function () {
     };
     UserService.prototype.register = function (form, file) {
         var fd = new FormData();
-        console.log(form);
         fd.append("username", form.value.username);
         fd.append("password", form.value.password);
         fd.append("firstname", form.value.firstname);

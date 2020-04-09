@@ -24,11 +24,20 @@ POST http://localhost:4000/user/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "user": {"username" : "y0y0",
-    "password" : "y0y0y0y00y"}
+    "user": {"username" : "anush",
+    "password" : "anush123"}
 }
 
 ####
 
 GET http://localhost:4000/user/userdetails HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InkweTAiLCJpYXQiOjE1ODY0Mzc4MzcsImV4cCI6MTU4NjQ0NTAzN30.km7h5Ys5Zsj-go62aW2qE2QdUzZtTk0Q_1L5hglFJxY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFudXNoIiwiaWF0IjoxNTg2NDQxNzQxLCJleHAiOjE1ODY0NDUzNDF9.yA8gohtr2Dyue__BZbxzndlmEehn4T3sna4w-VG-lmY
+
+###
+
+GET http://localhost:4000/images/5e8f2dfe67e2d52130719c8c HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFudXNoIiwiaWF0IjoxNTg2NDQxNzQxLCJleHAiOjE1ODY0NDUzNDF9.yA8gohtr2Dyue__BZbxzndlmEehn4T3sna4w-VG-lmY
+
+###
+
+POST http://localhost:4000/user/logout HTTP/1.1

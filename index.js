@@ -26,7 +26,7 @@ app.use(express.json());
 var isMultipart = /^multipart\//i;
 app.use(function (req, res, next) {
   var type = req.get('Content-Type');
-  if (isMultipart.test(type)){ console.log("yes"); return next(); } 
+  if (isMultipart.test(type)){ return next(); } 
   return express.urlencoded({ extended: false })(req, res, next);
 });
 
