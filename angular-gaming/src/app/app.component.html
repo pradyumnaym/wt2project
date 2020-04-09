@@ -1,22 +1,4 @@
-<!-- nav -->
-<div class="header bg-light">
-  <a routerLink="/" class="logo">Gaming Website</a>
-<nav class="navbar navbar-expand navbar-dark header-right" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" routerLink="/profile">Profile</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
-
-<!-- main content container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <alert></alert>
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
+<div>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
 </div>
