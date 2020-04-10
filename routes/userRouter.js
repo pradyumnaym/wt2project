@@ -41,9 +41,13 @@ router.post("/register", (req, res)=>{
       }
       console.log("Yes");
       newuser = fields;
+      newuser["friends"] = []
+      newuser["achievements"] = []
+      newuser["games"] = []
+
       if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 
-        type = files['file'].type
+        type = files['file'].type;
         ProfilePic.addImage(img, type, id =>{
           newuser['img'] = id;
 
