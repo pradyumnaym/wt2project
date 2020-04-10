@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../services/profile.service';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
