@@ -38,7 +38,6 @@ router.post("/register", (req, res)=>{
       if (err) {
         throw err
       }
-      console.log("Yes");
       newuser = fields;
       newuser["friends"] = []
       newuser["achievements"] = []
@@ -69,18 +68,17 @@ router.get("/userdetails", verifyToken,  (req, res) => {
   User.getUserByUserName(req.user.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
-    var {img, firstname, lastname, username} = user;
-    return res.status(200).json({firstname, lastname, username, img});
+    var {img, firstname, lastname, username, email , facebook , twitter, summary} = user;
+    return res.status(200).json({firstname, lastname, username, img, email , facebook , twitter, summary});
   });
 });
-
 
 router.get("/friends/:username", verifyToken, (req, res)=>{
   User.getUserByUserName(req.params.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
-    var {img, firstname, lastname, username} = user;
-    return res.status(200).json({firstname, lastname, username, img});
+    var {img, firstname, lastname, username, email , facebook , twitter, summary} = user;
+    return res.status(200).json({img, firstname, lastname, username, email , facebook , twitter, summary});
   });
 });
 
@@ -120,10 +118,48 @@ router.post("/addfriend", verifyToken, (req, res) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
     user["friends"].push(req.body.username);
-    user.markModified("friendrequests");
+    user.markModified("friends");
     user.save(err=>console.log(err));
     return res.status(200).json({});
   });
 });
+
+router.post("/addfacebook", verifyToken, (req, res) => {
+  if(!req.body.link) return res.sendStatus(405);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user["facebook"] = req.body.link;
+    user.markModified("facebook");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
+  });
+});
+
+router.post("/addtwitter", verifyToken, (req, res) => {
+  if(!req.body.link) return res.sendStatus(405);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user["twitter"] = req.body.link;
+    user.markModified("twitter");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
+  });
+});
+
+router.post("/addsummary", verifyToken, (req, res) => {
+  if(!req.body.text) return res.sendStatus(405);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user["summary"] = req.body.text;
+    user.markModified("summary");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
+  });
+});
+
+
 
 module.exports = router;
