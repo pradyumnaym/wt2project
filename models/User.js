@@ -6,9 +6,10 @@ const UserSchema = new mongoose.Schema({
   firstname : {type : String, required : true},
   lastname : {type : String, required : true},
   img : {type : String, required : false},
-  friends: {type : mongoose.Schema.Types.Mixed, required : false},
-  achievements: {type : mongoose.Schema.Types.Mixed, required : false},
-  games: {type : mongoose.Schema.Types.Mixed, required : false}
+  friends: {type : mongoose.Schema.Types.Mixed, required : true},
+  friendrequests: {type : mongoose.Schema.Types.Mixed, required : true},
+  achievements: {type : mongoose.Schema.Types.Mixed, required : true},
+  games: {type : mongoose.Schema.Types.Mixed, required : true}
 });
 
 var User = (module.exports = mongoose.model("User", UserSchema));
