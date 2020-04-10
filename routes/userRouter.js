@@ -54,13 +54,13 @@ router.post("/register", (req, res)=>{
 
           User.addUser(newuser, (err, nuser)=>{
             if(err) return res.status(400).json(err);
-            else return res.sendStatus(200).json({});
+            else return res.sendStatus(200);
           })
         })
       }else{
         User.addUser(newuser, (err, nuser)=>{
           if(err) return res.status(400).json(err);
-          else return res.sendStatus(200).json({});
+          else return res.sendStatus(200);
         })
       }
     })
