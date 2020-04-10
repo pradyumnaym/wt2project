@@ -5,7 +5,7 @@ const ProfilePic = require(path.join("..", "models", "ProfilePic.js"));
 const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
 
 api.get("/profilepic", verifyToken, (req, res) => {
-  if(!req.user.img) res.sendStatus(404);
+  if(!req.user.img) return res.sendStatus(404);
   ProfilePic.getImageById(req.user.img, (err, doc) => {
     if (err) throw err;
     if(!doc) return res.sendStatus(404);
