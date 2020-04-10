@@ -40,6 +40,7 @@ router.post("/register", (req, res)=>{
       if (err) {
         throw err
       }
+      console.log("Yes");
       newuser = fields;
       if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 

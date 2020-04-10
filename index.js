@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const cors = require('cors');
 
 const user = require(path.join(__dirname, "routes", "userRouter.js"));
 const game = require(path.join(__dirname, "routes", "gameRouter.js"));
@@ -17,6 +18,8 @@ mongoose.connect(
 
 const app = express();
 
+
+app.use(cors());
 app.use(express.static("./abc"));
 app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
