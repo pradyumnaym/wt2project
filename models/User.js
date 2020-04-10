@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   firstname : {type : String, required : true},
   lastname : {type : String, required : true},
   img : {type : String, required : false},
-  friend_list: {type : mongoose.Schema.Types.Mixed, required : false},
+  friends: {type : mongoose.Schema.Types.Mixed, required : false},
   achievements: {type : mongoose.Schema.Types.Mixed, required : false},
   games: {type : mongoose.Schema.Types.Mixed, required : false}
 });
