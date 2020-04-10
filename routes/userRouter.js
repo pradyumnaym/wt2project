@@ -8,7 +8,6 @@ const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
 
 var fs = require("fs")
 
-
 var router = express.Router();
 
 router.post("/login", (req, res)=>{
@@ -70,5 +69,15 @@ router.get("/userdetails", verifyToken,  (req, res) => {
     return res.status(200).json({firstname, lastname, username, img});
   });
 });
+
+
+router.get("/friends/:username", verifyToken, (req, res)=>{
+  User.getUserByUserName(req.params.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    var {img, firstname, lastname, username} = user;
+    return res.status(200).json({firstname, lastname, username, img});
+  });
+})
 
 module.exports = router;
