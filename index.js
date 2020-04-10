@@ -15,15 +15,12 @@ mongoose.connect(
   }
 );
 
-
 const app = express();
-
 
 app.use(cors());
 app.use(express.static("./abc"));
 app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
-
 
 //use bodyparser middleware only if it is not of MIME type multipart*
 var isMultipart = /^multipart\//i;

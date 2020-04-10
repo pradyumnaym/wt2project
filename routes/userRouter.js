@@ -16,7 +16,7 @@ router.post("/login", (req, res)=>{
 
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
-        if((usr != null) && ( bcrypt.compareSync(givenUser.password, usr.password))){
+        if((usr != null) && (bcrypt.compareSync(givenUser.password, usr.password))){
             jwt.sign({username : usr.username, img : usr.img}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
                 return res.status(200).json({
@@ -120,9 +120,18 @@ router.post("/addfriend", verifyToken, (req, res) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
     user["friends"].push(req.body.username);
+    user['friendrequests'].splice(user['friendrequests'].indexOf(req.body.username), 1)
     user.markModified("friends");
+    user.markModified("friendrequests");
     user.save(err=>console.log(err));
-    return res.status(200).json({});
+    User.getUserByUserName(req.body.username, (err, sender) =>{
+      if(err) return res.sendStatus(500);
+      if(!sender) return res.sendStatus(404);
+      sender["friends"].push(req.user.username);
+      sender.markModified("friends");
+      sender.save(err=> console.log(err));
+      return res.status(200).json({});
+    });
   });
 });
 
