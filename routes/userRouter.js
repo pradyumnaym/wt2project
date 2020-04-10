@@ -102,4 +102,28 @@ router.get("/friendrequests", verifyToken, (req, res)=>{
   });
 });
 
+router.post("/sendrequest", verifyToken, (req, res) =>{
+  if(!req.body.username) return res.sendStatus(405);
+  User.getUserByUserName(req.body.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user["friendrequests"].push(req.user.username);
+    user.markModified("friendrequests");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
+  });
+});
+
+router.post("/addfriend", verifyToken, (req, res) =>{
+  if(!req.body.username) return res.sendStatus(405);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user["friends"].push(req.body.username);
+    user.markModified("friendrequests");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
+  });
+});
+
 module.exports = router;
