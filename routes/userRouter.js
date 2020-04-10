@@ -18,15 +18,14 @@ router.post("/login", (req, res)=>{
         if((usr != null) && (usr.password == givenUser.password)){
             jwt.sign({username : usr.username, img : usr.img}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
-                res.status(200).json({
+                return res.status(200).json({
                     token
                 });
             });
         }else{
-            res.status(400).json({});
+            return res.status(400).json({});
         }
     });
-
 });
 
 router.post("/logout", (req, res)=>{
@@ -44,6 +43,7 @@ router.post("/register", (req, res)=>{
       newuser["friends"] = []
       newuser["achievements"] = []
       newuser["games"] = []
+      newuser["friendrequests"] = []
 
       if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 
@@ -52,14 +52,14 @@ router.post("/register", (req, res)=>{
           newuser['img'] = id;
 
           User.addUser(newuser, (err, nuser)=>{
-            if(err) res.status(400).json(err);
-            else res.sendStatus(200);
+            if(err) return res.status(400).json(err);
+            else return res.sendStatus(200);
           })
         })
       }else{
         User.addUser(newuser, (err, nuser)=>{
-          if(err) res.status(400).json(err);
-          else res.sendStatus(200);
+          if(err) return res.status(400).json(err);
+          else return res.sendStatus(200);
         })
       }
     })
@@ -82,6 +82,24 @@ router.get("/friends/:username", verifyToken, (req, res)=>{
     var {img, firstname, lastname, username} = user;
     return res.status(200).json({firstname, lastname, username, img});
   });
-})
+});
+
+router.get("/friendslist", verifyToken, (req, res)=>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    var {friends} = user;
+    return res.status(200).json(friends);
+  });
+});
+
+router.get("/friendrequests", verifyToken, (req, res)=>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    var {friendrequests} = user;
+    return res.status(200).json(friendrequests);
+  });
+});
 
 module.exports = router;
