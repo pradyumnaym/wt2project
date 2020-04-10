@@ -107,8 +107,11 @@ router.post("/sendrequest", verifyToken, (req, res) =>{
   User.getUserByUserName(req.body.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
-    user["friendrequests"].push(req.user.username);
-    user.markModified("friendrequests");
+    if(user["friends"].indexOf(req.user.username) !== -1) return res.sendStatus(201);
+    if(user["friendrequests"].indexOf(req.user.username) !== -1) {
+      user["friendrequests"].push(req.user.username);
+      user.markModified("friendrequests");
+    }
     user.save(err=>console.log(err));
     return res.status(200).json({});
   });
