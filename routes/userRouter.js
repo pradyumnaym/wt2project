@@ -5,6 +5,7 @@ const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
 const jwt = require('jsonwebtoken');
 const formidable = require('formidable');
 const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
+const bcrypt = require('bcryptjs');
 
 var fs = require("fs")
 
@@ -15,7 +16,7 @@ router.post("/login", (req, res)=>{
 
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
-        if((usr != null) && (usr.password == givenUser.password)){
+        if((usr != null) && ( bcrypt.compareSync(givenUser.password, usr.password))){
             jwt.sign({username : usr.username, img : usr.img}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
                 return res.status(200).json({
@@ -43,6 +44,7 @@ router.post("/register", (req, res)=>{
       newuser["achievements"] = []
       newuser["games"] = []
       newuser["friendrequests"] = []
+      newuser["password"] = bcrypt.hashSync(newuser["password"], 10)
 
       if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 
