@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProfileService} from '../services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  profile:any = {}
+  profilePic:any = {}
 
-  ngOnInit(): void {
+
+  constructor(
+    private profileService:ProfileService
+  ) { }
+
+  ngOnInit():void {
+    this.profileService.getUserDetails().subscribe(
+      user => {
+        this.profile = user
+        if(this.profile.img == undefined) {
+          document.getElementById('profile_pic').setAttribute('src',"../assets/me.jpg")
+        }
+        else {
+          this.profileService.getUserImg(user).subscribe(
+            response => {
+                document.getElementById('profile_pic').setAttribute('src',URL.createObjectURL(response)) 
+            },
+            error => console.log(error)
+          );
+        }
+      }
+    )
   }
-
 }
