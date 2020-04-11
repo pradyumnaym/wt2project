@@ -1,7 +1,7 @@
 import { Component, OnInit ,Input, ViewChild } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { Game } from '../models/gamecard';
 
 
 @Component({
@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class CardComponent implements OnInit {
 
-  @Input() sadsa: MatCardModule;
+
+  @Input() games: Game;
 
   constructor() { }
 

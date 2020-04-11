@@ -9,10 +9,10 @@ import {RequestsComponent} from './requests/requests.component';
 
 
 const routes: Routes = [
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'home', component: HomeComponent},
   {path: 'requests', component: RequestsComponent,canActivate: [AuthGuard]}
 ];
 

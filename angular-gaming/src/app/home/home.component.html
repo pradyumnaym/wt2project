@@ -1,3 +1,7 @@
 <!-- <iframe height = 1000 width = 1000 src="../../assets/Space-Shooter/space_shooter.html"></iframe> -->
 <!-- <iframe height = 1000 width = 1000 src="../../assets/Chess/chess.html"></iframe> -->
-<app-card></app-card>
+<app-card
+  *ngFor="let game of games"
+  [games]="game"
+  >
+</app-card>
