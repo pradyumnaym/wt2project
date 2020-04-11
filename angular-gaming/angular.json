@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-gaming"
+    }
+  },
+  "defaultProject": "angular-gaming",
+  "cli": {
+    "analytics": "cf246c74-25eb-44ce-a386-5863d6774f8b"
+  }
 }
