@@ -20,6 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {CardComponent} from './card/card.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {CardComponent} from './card/card.component';
     HomeComponent,
     SafePipe,
     RequestsComponent,
-    CardComponent
+    CardComponent,
+    CarouselComponent
 
   ],
   imports: [

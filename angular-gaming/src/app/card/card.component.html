@@ -1,18 +1,26 @@
 
-<mat-card class="example-card">
+<!-- <mat-card class="example-card">
 
 
     <b><mat-card-title>{{games.name}}</mat-card-title>
     <mat-card-subtitle> rating :  {{games.rating}}</mat-card-subtitle></b>
 
   <img mat-card-image src={{games.imgUrl}}>
-  <mat-card-content>
+
 
       {{games.desc}}
 
-  </mat-card-content>
   <mat-card-actions>
     <button mat-button><a href={{games.src}}>Play</a></button>
 
   </mat-card-actions>
-</mat-card>
+</mat-card> -->
+
+<div class="boxed container">
+  <div style="text-align: center;">
+  <h1 style="color: aliceblue;">{{games.name}}</h1>
+  </div>
+  <img src = {{games.imgUrl}} width="350px" height="300px">
+  <div class="topright" style="color: antiquewhite;">{{games.desc}}</div>
+  <div class="bottomright"><button class="button"><a href={{games.src}} style="color: red;">Play</a></button></div>
+</div>
