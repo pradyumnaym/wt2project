@@ -19,6 +19,11 @@
 <div class="boxed container">
   <div style="text-align: center;">
   <h1 style="color: aliceblue;">{{games.name}}</h1>
+  <app-onestars *ngIf="games.rating === 1"></app-onestars>
+  <app-twostars *ngIf="games.rating === 2"></app-twostars>
+  <app-threestars *ngIf="games.rating === 3"></app-threestars>
+  <app-fourstars *ngIf="games.rating === 4"></app-fourstars>
+  <app-fivestars *ngIf="games.rating === 5"></app-fivestars>
   </div>
   <img src = {{games.imgUrl}} width="350px" height="300px">
   <div class="topright" style="color: antiquewhite;">{{games.desc}}</div>

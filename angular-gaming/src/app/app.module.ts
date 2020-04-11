@@ -21,6 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {CardComponent} from './card/card.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { ThreestarsComponent } from './threestars/threestars.component';
+import { OnestarsComponent } from './onestars/onestars.component';
+import { TwostarsComponent } from './twostars/twostars.component';
+import { FourstarsComponent } from './fourstars/fourstars.component';
+import { FivestarsComponent } from './fivestars/fivestars.component';
 
 
 @NgModule({
@@ -34,7 +39,12 @@ import { CarouselComponent } from './carousel/carousel.component';
     SafePipe,
     RequestsComponent,
     CardComponent,
-    CarouselComponent
+    CarouselComponent,
+    ThreestarsComponent,
+    OnestarsComponent,
+    TwostarsComponent,
+    FourstarsComponent,
+    FivestarsComponent
 
   ],
   imports: [
