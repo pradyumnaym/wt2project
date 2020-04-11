@@ -5,14 +5,23 @@
         </div>
         <div class="content">
             <h1>{{profile.firstname}} {{profile.lastname}}</h1>
-            <h2>Gamer</h2>
-            <p> I am cool people drool. You fool, you are old school.</p>
-            <h3>You can find me at</h3>
+            <p>I am cool people drool. You fool, you are old school.</p>
         </div>
         <div class="social">
             <a href="#"><i class="fab fa-mail"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div>
+            {{profile.firstname}}'s Friends
+            <div id="friends">
+                <div class="row row-list">
+                    <div class="col-sm" *ngFor="let friend of friendProfiles;Index as i">
+                        <img [src]="friend.imgSrc" class="friend_img"><br>
+                        <a href="#" class="friend_link"><span>{{friend.firstname}} {{friend.lastname}}</span></a>
+                    </div>
+                </div>   
+            </div>
         </div>
     </div>
 </div>

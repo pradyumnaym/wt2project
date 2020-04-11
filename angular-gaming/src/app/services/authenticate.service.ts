@@ -31,6 +31,7 @@ export class AuthenticateService {
     fd.append("firstname", user.firstname);
     fd.append("lastname", user.lastname);
     fd.append("file", user.file);
+    fd.append("email",user.email);
     return this.http.post<any>(this._registerUrl, fd);
   }
 

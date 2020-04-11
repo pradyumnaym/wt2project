@@ -5,13 +5,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent, SafePipe } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
+import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './guards/auth.guard';
 import {TokenInterceptorService} from './services/token-interceptor.service';
+import { RequestsComponent } from './requests/requests.component';
 
 
 @NgModule({
@@ -20,7 +22,10 @@ import {TokenInterceptorService} from './services/token-interceptor.service';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    SafePipe,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,
