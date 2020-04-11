@@ -26,6 +26,8 @@ import { OnestarsComponent } from './onestars/onestars.component';
 import { TwostarsComponent } from './twostars/twostars.component';
 import { FourstarsComponent } from './fourstars/fourstars.component';
 import { FivestarsComponent } from './fivestars/fivestars.component';
+import { BlogComponent } from './blog/blog.component';
+import { FeedComponent } from './feed/feed.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { FivestarsComponent } from './fivestars/fivestars.component';
     OnestarsComponent,
     TwostarsComponent,
     FourstarsComponent,
-    FivestarsComponent
+    FivestarsComponent,
+    BlogComponent,
+    FeedComponent
 
   ],
   imports: [
