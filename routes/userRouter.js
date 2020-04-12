@@ -17,7 +17,7 @@ router.post("/login", (req, res)=>{
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
         if((usr != null) && (bcrypt.compareSync(givenUser.password, usr.password))){
-            jwt.sign({username : usr.username, img : usr.img}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
+            jwt.sign({username : usr.username}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
                 return res.status(200).json({
                     token
@@ -212,7 +212,5 @@ router.post("/updateimage", verifyToken, (req, res)=>{
     })
   });
 });
-
-
 
 module.exports = router;
