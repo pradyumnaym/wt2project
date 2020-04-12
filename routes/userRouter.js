@@ -87,6 +87,7 @@ router.get("/profile/:username", verifyToken, (req, res)=>{
 router.post("/friendslist", verifyToken, (req, res)=>{
   User.getUserByUserName(req.body.username, (err, user) =>{
     if(err) return res.sendStatus(500);
+    console.log(user);
     if(!user) return res.sendStatus(404);
     var {friends} = user;
     return res.status(200).json(friends);
