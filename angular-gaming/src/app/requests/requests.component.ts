@@ -20,7 +20,6 @@ export class RequestsComponent implements OnInit {
   getRequests() {
     this.requestsService.getFriendRequests().subscribe(
       response => {this.requests = response
-        this.requests = ["abeability"]
         if(this.requests.length > 0) {
           this.hasRequests = true
         }
