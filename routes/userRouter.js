@@ -199,7 +199,7 @@ router.post("/updateimage", verifyToken, (req, res)=>{
         img = fs.readFileSync(files['file'].path) 
         type = files['file'].type;
         if(user.img){
-          ProfilePic.removeImage(uer.img)
+          ProfilePic.removeImage(user.img)
         }
         ProfilePic.addImage(img, type, id =>{
           user['img'] = id;

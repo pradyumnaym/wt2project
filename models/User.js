@@ -26,3 +26,5 @@ module.exports.addUser = (user, callback) => {
   var u = new User(user);
   u.save(callback);
 };
+
+module.exports.getAllUsers = () =>{}
