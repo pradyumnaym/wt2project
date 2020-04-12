@@ -9,6 +9,7 @@ export class RequestsService {
 
   _getFriendRequests = 'http://localhost:4000/user/friendrequests';
   _addFriendUrl = 'http://localhost:4000/user/addfriend';
+  _rejectFriendUrl = 'http://localhost:4000/user/rejectrequest';
 
   constructor(
     private http:HttpClient
@@ -20,6 +21,10 @@ export class RequestsService {
 
   addFriend(username) {
     return this.http.post<any>(this._addFriendUrl, {"username":username})
+  }
+
+  rejectFriend(username) {
+    return this.http.post<any>(this._rejectFriendUrl, {"username":username})
   }
 
 }

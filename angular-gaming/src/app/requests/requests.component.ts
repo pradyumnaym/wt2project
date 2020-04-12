@@ -20,6 +20,7 @@ export class RequestsComponent implements OnInit {
   getRequests() {
     this.requestsService.getFriendRequests().subscribe(
       response => {this.requests = response
+        console.log(response)
         if(this.requests.length > 0) {
           this.hasRequests = true
         }
@@ -30,8 +31,17 @@ export class RequestsComponent implements OnInit {
   }
 
   addFriendRequest(index) {
+    document.getElementById("requestBox").style.display = 'none'
     this.requestsService.addFriend(this.requests[index]).subscribe(
       response => console.log("Friend Added"),
+      error => console.log(error)
+    )
+  }
+
+  rejectFriendRequest(index) {
+    document.getElementById("requestBox").style.display = 'none'
+    this.requestsService.rejectFriend(this.requests[index]).subscribe(
+      response => console.log("Friend Removed"),
       error => console.log(error)
     )
   }

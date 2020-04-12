@@ -9,25 +9,49 @@ import {ProfileService} from '../services/profile.service';
 export class FriendsComponent implements OnInit {
   friends:any[];
   hasFriends:boolean  = false;
+  username:string
   constructor(
     private profileService:ProfileService
   ) { }
 
-  ngOnInit(): void {
-    this.getUserFriends()
+  updateUserName() {
+    this.profileService.getUserDetails().subscribe(
+      user => {
+        this.getUserFriends(user.username)
+      },
+      error => console.log(error)
+    )
   }
 
-  getUserFriends() {
-    this.profileService.getFriends().subscribe(
+  ngOnInit(): void {
+    this.updateUserName()  
+  }
+
+  getUserFriends(username) {
+    this.profileService.getFriends(username).subscribe(
       response => {
                     this.friends = response
-                    if(this.friends.length > 0) {
+                    for(var i=0;i<3 && i<this.friends.length;i++) {
                       this.hasFriends = true
+                      this.getProfileDetails(this.friends[i])
                     }
-                    console.log(this.friends)
                   },
       error => console.log(error)
     )
+  }
+
+  getProfileDetails(username) {
+    this.profileService.getProfile(username).subscribe(
+      response => {
+        document.getElementById(`${username}_name`).innerHTML = `${response.username}`
+        if(response.img == undefined) {
+          (<HTMLImageElement>document.getElementById(`${username}_img`)).src = "../assets/me.jpg"
+        }
+        else {
+          (<HTMLImageElement>document.getElementById(`${username}_img`)).src = `http://localhost:4000/images/logo/${response.img}`
+        }},
+        error => (<HTMLImageElement>document.getElementById(`${username}_img`)).src = "../assets/me.jpg"
+        )
   }
 
 }

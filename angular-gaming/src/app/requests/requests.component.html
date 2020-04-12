@@ -8,8 +8,8 @@
             <div class="requestBox" id="request{{i}}">
                 <span id="requestMessage">{{request}} wants to be friends with you.</span>
                 <div id="container">
-                    <button (click)="addFriendRequest(i)">Accept</button>
-                    <button >Reject</button>
+                    <button id="button{{i}}" (click)="addFriendRequest(i)">Accept</button>
+                    <button (click)="rejectFriendRequest(i)" >Reject</button>
                 </div>
             </div>
         </div>

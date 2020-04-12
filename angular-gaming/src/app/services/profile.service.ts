@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,8 +32,8 @@ export class ProfileService {
     return this.http.get(this._profilePicUrl, { responseType: 'blob' })
   }
 
-  getFriends() {
-    return this.http.get<any>(this._getFriendList)
+  getFriends(username) {
+    return this.http.post<any>(this._getFriendList,{ 'username': username })
   }
 
   getProfile(username) {

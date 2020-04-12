@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   friends:any[]
   requests:any = {}
   index:any
+  username:any
 
   constructor(
     private profileService:ProfileService,
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getUserDetails().subscribe(
       user => {
         this.profile = user
+        this.username = user.username
         console.log(user)
         
         if(this.profile.facebook != undefined) {
@@ -49,6 +51,8 @@ export class ProfileComponent implements OnInit {
           document.getElementById("summary").innerHTML = this.profile.summary
         }
 
+        this.getUserFriends(user.username)
+
         if(this.profile.img == undefined) {
           document.getElementById('profile_pic').setAttribute('src',"../assets/me.jpg")
         }
@@ -57,11 +61,10 @@ export class ProfileComponent implements OnInit {
         }
       }
     )
-    this.getUserFriends()
   }
 
-  getUserFriends() {
-    this.profileService.getFriends().subscribe(
+  getUserFriends(username) {
+    this.profileService.getFriends(username).subscribe(
       response => {
                     this.friends = response
                     console.log(response)

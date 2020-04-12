@@ -18,8 +18,8 @@ export class SearchService {
     return this.http.get<any>(`${this._getprofileUrl}${username}`)
   }
 
-  getFriends() {
-    return this.http.get<any>(this._getFriendList)
+  getFriends(username) {
+    return this.http.post<any>(this._getFriendList,{'username': username})
   }
 
   sendFriendRequest(username) {

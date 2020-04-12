@@ -56,12 +56,12 @@ export class SearchComponent implements OnInit {
         }
       }
     )
-    this.getUserFriends()
+    this.getUserFriends(this.username)
   }
 
-  getUserFriends() {
-    this.searchService.getFriends().subscribe(
-      response => {
+  getUserFriends(username) {
+    this.searchService.getFriends(username).subscribe(
+      response => { 
                     this.friends = response
                     console.log(response)
                     for(var i =0;i<3 && i<this.friends.length;i++) {

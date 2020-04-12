@@ -2,9 +2,10 @@
     <h2><p>You currently have no friends</p></h2>
 </div>
 <div *ngIf="hasFriends">
-    <div *ngFor="let friend of friends;let i = index;">
-        <div class="friendBox" id="friend{{i}}">
-            <a id="{{friend}}Link">{{friend}}</a>
+    <div class="friendBox" *ngFor="let friend of friends;let i = index;">
+        <div class="row row-list" id="friend{{i}}">
+            <img class="friendImg" id="{{friend}}_img">
+            <span class="friendName" id="{{friend}}_name">{{friend}}</span>
         </div>
     </div>
 </div>
