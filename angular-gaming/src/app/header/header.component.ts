@@ -7,7 +7,7 @@ import {AuthenticateService} from '../services/authenticate.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn:boolean = true
+  isLogged:boolean = true
   constructor(
     private authenticateService:AuthenticateService
   ) { }
@@ -17,10 +17,10 @@ export class HeaderComponent implements OnInit {
   }
 
   CheckloggedIn() {
-    this.isLoggedIn = this.authenticateService.loggedIn()
+    this.isLogged = this.authenticateService.loggedIn()
   }
 
   logout() {
-    this.isLoggedIn = this.authenticateService.logout()
+    this.isLogged = this.authenticateService.logout()
   }
 }
