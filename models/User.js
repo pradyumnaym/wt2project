@@ -28,6 +28,5 @@ module.exports.addUser = (user, callback) => {
 };
 
 module.exports.getAllUsers = (callback) =>{
-  console.log("yes")
   User.find({}, callback);
 }

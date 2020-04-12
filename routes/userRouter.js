@@ -214,7 +214,6 @@ router.post("/updateimage", verifyToken, (req, res)=>{
 });
 
 router.get('/allusers', (req, res)=>{
-  console.log("yes")
   userlist = []
   User.getAllUsers((err, users) => {
     if(err) throw err;
@@ -222,11 +221,14 @@ router.get('/allusers', (req, res)=>{
         var {username, img, friends} = user;
         userlist.push({username, img, friends});
     });
-    console.log(userlist)
     res.status(200).json(userlist)
     let data  = JSON.stringify(userlist, null, 2)
     fs.writeFileSync(path.join(__dirname, "..", "imageprocessing", "data.json"), data)
   });
 });
 
+router.get('/updateusers', (req, res)=>{
+  res.sendStatus(201);
+  
+})
 module.exports = router;

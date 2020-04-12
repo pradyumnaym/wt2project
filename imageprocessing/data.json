@@ -8,5 +8,35 @@
             "username": "abe123",
             "img": "5e92f87f3b3ad31e7ec789a0",
             "friends": []
+      },
+      {
+            "username": "testera",
+            "img": "5e931dc73b3ad31e7ec789a1",
+            "friends": [
+                  "testerb",
+                  "testerd",
+                  "testerc"
+            ]
+      },
+      {
+            "username": "testerb",
+            "img": "5e931df63b3ad31e7ec789a3",
+            "friends": [
+                  "testera"
+            ]
+      },
+      {
+            "username": "testerc",
+            "img": "5e931e103b3ad31e7ec789a5",
+            "friends": [
+                  "testera"
+            ]
+      },
+      {
+            "username": "testerd",
+            "img": "5e931e4b3b3ad31e7ec789a7",
+            "friends": [
+                  "testera"
+            ]
       }
 ]
