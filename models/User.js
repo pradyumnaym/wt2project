@@ -27,4 +27,7 @@ module.exports.addUser = (user, callback) => {
   u.save(callback);
 };
 
-module.exports.getAllUsers = () =>{}
+module.exports.getAllUsers = (callback) =>{
+  console.log("yes")
+  User.find({}, callback);
+}
