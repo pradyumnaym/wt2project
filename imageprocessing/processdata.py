@@ -53,5 +53,5 @@ for user in data:
 for user in data:
     del user['image']
 
-with open("data.json") as f:
+with open("data.json", "w") as f:
     json.dump(data, f, indent = 6)
