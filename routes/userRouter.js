@@ -187,5 +187,32 @@ router.post("/addsummary", verifyToken, (req, res) => {
 });
 
 
+router.post("/updateimage", verifyToken, (req, res)=>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    if(user.img){
+      ProfilePic.removeImage(uer.img)
+    }
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        throw err
+      }
+      if(files && files['file']){
+        img = fs.readFileSync(files['file'].path) 
+        type = files['file'].type;
+        ProfilePic.addImage(img, type, id =>{
+          user['img'] = id;
+          user.save();
+          return res.status(200).json({});
+        })
+      }else{
+        return res.sendStatus(405);
+      }
+    })
+  });
+});
+
+
 
 module.exports = router;

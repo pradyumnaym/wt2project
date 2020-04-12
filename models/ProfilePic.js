@@ -20,3 +20,11 @@ module.exports.addImage = (image, type, callback) => {
 module.exports.getImageById = (id, callback) =>{
   Image.findById(id, callback);
 }
+
+module.exports.removeImage = imageid => {
+  module.exports.getImageById(imageid, (err, img)=>{
+    if(err) return;
+    if(!img) return;
+    img.remove();
+  })
+}

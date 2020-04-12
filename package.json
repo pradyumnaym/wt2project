@@ -2,6 +2,7 @@
   "name": "node",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "serve": "nodemon index.js"
@@ -9,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tensorflow/tfjs-node": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
