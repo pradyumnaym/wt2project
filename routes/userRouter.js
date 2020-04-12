@@ -191,9 +191,6 @@ router.post("/updateimage", verifyToken, (req, res)=>{
   User.getUserByUserName(req.user.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
-    if(user.img){
-      ProfilePic.removeImage(uer.img)
-    }
     new formidable.IncomingForm().parse(req, (err, fields, files) => {
       if (err) {
         throw err
@@ -201,6 +198,9 @@ router.post("/updateimage", verifyToken, (req, res)=>{
       if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 
         type = files['file'].type;
+        if(user.img){
+          ProfilePic.removeImage(uer.img)
+        }
         ProfilePic.addImage(img, type, id =>{
           user['img'] = id;
           user.save();
