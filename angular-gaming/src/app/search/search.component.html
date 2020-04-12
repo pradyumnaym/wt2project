@@ -1,28 +1,22 @@
-<div class="body">
+<div>
+    <input id="username">
+    <button (click)="searchUser()">Search</button>
+</div>
+<div class="body" id="profile_body">
     <div class="center">
-        <button (click)=showButtons()>Edit Info</button>
-        <button (click)=hideButtons()>Done</button>
+        <button (click)="sendFriendRequest()">Add Friend</button>
         <div class="avatar">
-            <img id="profile_pic" (click)=openfileDialog()>
+            <img id="profile_pic">
         </div>
         <div class="content">
             <h1>{{profile.firstname}} {{profile.lastname}}</h1>
-            <p id="summary" class="summary" (click)=editProfile()>I love gaming.</p>
-            <button class="hidden" id="edit_tag" (click)="updateSummary()">Update</button>
+            <p id="summary" class="summary">I love gaming.</p>
         </div>
         <div class="social">
             <div *ngIf="hasFacebook || hasTwitter">You can find me at</div>
             <a *ngIf="hasFacebook" id="fb" href={{profile.facebook}} target="_blank"><i class="fab fa-facebook"></i></a>
             <a *ngIf="hasTwitter" id="twtr" href={{profile.twitter}} target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
-        <div class="hidden">
-            <span>Enter facebook profile link</span><input type="text" id="fbLink">
-            <button class="hidden" id="fb_update" (click)="updateFacebook()">Update</button>
-            <br>
-            <span>Enter twitter profile link</span><input type="text" id="twtrLink">
-            <button class="hidden" id="twtr_update" (click)="updateTwitter()">Update</button>
-            <br> 
-       </div>
         <br>
         <div *ngIf="hasFriends">
             {{profile.firstname}}'s Friends
@@ -36,9 +30,7 @@
             </div>
         </div>
         <div *ngIf="hasFriends == false">
-            You haven't made any friends yet
+            {{profile.firstname}} hasn't made any friends yet
         </div>
     </div>
-</div>
-<input id="imageUpload" type="file" name="image" accept="image/*" (change)="updateImage($event.target.files)">
-
+</div> 

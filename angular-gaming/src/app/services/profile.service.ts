@@ -8,7 +8,6 @@ export class ProfileService {
 
   _userDetailsUrl = "http://localhost:4000/user/userdetails";
   _profilePicUrl = "http://localhost:4000/images/profilepic";
-  _sendFriendRequestUrl = "http://localhost:4000/user/sendrequest";
   _getFriendList = 'http://localhost:4000/user/friendslist';
   _getprofileUrl = 'http://localhost:4000/user/profile/';
   _updateImageUrl = 'http://localhost:4000/user/updateimage';
@@ -27,10 +26,6 @@ export class ProfileService {
 
   getUserImg(user) {
     return this.http.get(this._profilePicUrl, { responseType: 'blob' })
-  }
-
-  sendFriendRequest(username) {
-    return this.http.post<any>(this._sendFriendRequestUrl, {'username': username})
   }
 
   getFriends() {

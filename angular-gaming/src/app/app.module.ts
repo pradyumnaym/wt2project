@@ -28,6 +28,8 @@ import { FourstarsComponent } from './fourstars/fourstars.component';
 import { FivestarsComponent } from './fivestars/fivestars.component';
 import { BlogComponent } from './blog/blog.component';
 import { FeedComponent } from './feed/feed.component';
+import { FriendsComponent } from './friends/friends.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { FeedComponent } from './feed/feed.component';
     FourstarsComponent,
     FivestarsComponent,
     BlogComponent,
-    FeedComponent
+    FeedComponent,
+    FriendsComponent,
+    SearchComponent
 
   ],
   imports: [
