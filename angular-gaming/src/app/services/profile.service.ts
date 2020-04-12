@@ -11,7 +11,6 @@ export class ProfileService {
   _sendFriendRequestUrl = "http://localhost:4000/user/sendrequest";
   _addFriendUrl = 'http://localhost:4000/user/addfriend';
   _getFriendList = 'http://localhost:4000/user/friendslist';
-  _getFriendRequests = 'http://localhost:4000/user/friendrequests';
   _getprofileUrl = 'http://localhost:4000/user/profile/'
 
   constructor(
@@ -36,10 +35,6 @@ export class ProfileService {
 
   getFriends() {
     return this.http.get<any>(this._getFriendList)
-  }
-
-  getFriendRequests() {
-    return this.http.get<any>(this._getFriendRequests)
   }
 
   getProfile(username) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestsService} from '../services/requests.service';
 
 @Component({
   selector: 'app-requests',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./requests.component.css']
 })
 export class RequestsComponent implements OnInit {
-
-  constructor() { }
+  requests = {}
+  constructor(
+    private requestsService:RequestsService
+  ) { }
 
   ngOnInit(): void {
+    this.getRequests()
   }
+
+  getRequests() {
+    this.requestsService.getFriendRequests().subscribe(
+      response => {this.requests = response
+        console.log(response)
+      },
+      error => console.log(error)
+    )
+  }
+
 
 }

@@ -42,14 +42,6 @@ export class ProfileComponent implements OnInit {
       }
     )
 
-    this.profileService.getFriendRequests().subscribe(
-      response => {this.requests = response
-        //console.log("got requests")
-      },
-      error => console.log(error)
-    )
-
-
     this.profileService.getFriends().subscribe(
       response => {
                     this.friends = response
