@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../services/profile.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-profile',
@@ -13,12 +15,12 @@ export class ProfileComponent implements OnInit {
   hasFacebook:boolean = false
   hasTwitter:boolean = false
   hasSummary:boolean = false
+  userProfile:boolean = true
   profile:any = {}
   profilePic:any = {}
   friends:any[]
   requests:any = {}
-  friendProfiles:any = new Array()
-
+  index:any
 
   constructor(
     private profileService:ProfileService,
@@ -51,12 +53,7 @@ export class ProfileComponent implements OnInit {
           document.getElementById('profile_pic').setAttribute('src',"../assets/me.jpg")
         }
         else {
-          this.profileService.getUserImg(user).subscribe(
-            response => {
-                document.getElementById('profile_pic').setAttribute('src',URL.createObjectURL(response)) 
-            },
-            error => console.log(error)
-          );
+          document.getElementById('profile_pic').setAttribute('src',`http://localhost:4000/images/logo/${this.profile.img}`)
         }
       }
     )
@@ -67,6 +64,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getFriends().subscribe(
       response => {
                     this.friends = response
+                    console.log(response)
                     for(var i=0;i<3 && i<this.friends.length;i++) {
                       this.hasFriends = true
                       this.getProfileDetails(this.friends[i])
@@ -76,36 +74,19 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  // sendFriendRequest() {
-  //   this.profileService.sendFriendRequest(this.username).subscribe(
-  //     response => {
-  //       //console.log("request sent")
-  //     },
-  //     error => console.log(error)
-  //   ) 
-  // }
-
   getProfileDetails(username) {
-    //console.log(this.friends)
     this.profileService.getProfile(username).subscribe(
       response => {
-        
+        document.getElementById(`name_${username}`).innerHTML = `${response.firstname} ${response.lastname}`
         if(response.img == undefined) {
-          response.imgSrc = "../assets/me.jpg"
+          (<HTMLImageElement>document.getElementById(`img_${username}`)).src = "../assets/me.jpg"
         }
         else {
-          this.profileService.getUserImg(username).subscribe(
-            img => {
-                response.imgSrc = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(img))
-            },
-            error => console.log(error)
-          )
-        }
-        this.friendProfiles.push(response)
-      },
-      error => console.log(error)
-    )
-  }
+          (<HTMLImageElement>document.getElementById(`img_${username}`)).src = `http://localhost:4000/images/logo/${response.img}`
+        }},
+        error => (<HTMLImageElement>document.getElementById(`img_${username}`)).src = "../assets/me.jpg"
+        )
+}
 
   openfileDialog() {
     document.getElementById("imageUpload").click();

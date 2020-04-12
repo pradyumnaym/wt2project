@@ -7,6 +7,8 @@ import {AuthGuard} from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import {RequestsComponent} from './requests/requests.component';
 import {BlogComponent} from './blog/blog.component';
+import {FriendsComponent} from './friends/friends.component';
+import {SearchComponent} from './search/search.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,8 +16,9 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'requests', component: RequestsComponent,canActivate: [AuthGuard]},
-  {path: 'blog', component: BlogComponent}
-
+  {path: 'blog', component: BlogComponent},
+  {path: 'friends', component: FriendsComponent,canActivate: [AuthGuard]},
+  {path: 'search', component: SearchComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({
