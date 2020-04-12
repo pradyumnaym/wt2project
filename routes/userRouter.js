@@ -1,13 +1,13 @@
 var express = require('express');
 const path = require('path');
-const User = require(path.join("..", "models", "User.js"))
-const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
 const jwt = require('jsonwebtoken');
 const formidable = require('formidable');
-const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
+var fs = require("fs")
 const bcrypt = require('bcryptjs');
 
-var fs = require("fs")
+const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
+const User = require(path.join("..", "models", "User.js"))
+const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
 
 var router = express.Router();
 
@@ -135,6 +135,18 @@ router.post("/addfriend", verifyToken, (req, res) =>{
       sender.save(err=> console.log(err));
       return res.status(200).json({});
     });
+  });
+});
+
+router.post("/rejectrequest", verifyToken, (req, res) =>{
+  if(!req.body.username) return res.sendStatus(405);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user['friendrequests'].splice(user['friendrequests'].indexOf(req.body.username), 1)
+    user.markModified("friendrequests");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
   });
 });
 
