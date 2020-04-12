@@ -10,12 +10,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ProfileComponent implements OnInit {
 
   hasFriends:boolean = false
+  hasFacebook:boolean = false
+  hasTwitter:boolean = false
+  hasSummary:boolean = false
   profile:any = {}
   profilePic:any = {}
   friends:any[]
   requests:any = {}
-  username:string = "abeability"
-  friend:string = "abeability"
   friendProfiles:any = new Array()
 
 
@@ -25,10 +26,27 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
-    
+    this.getUserProfilePage();
+  }
+
+  getUserProfilePage() {
     this.profileService.getUserDetails().subscribe(
       user => {
         this.profile = user
+        console.log(user)
+        
+        if(this.profile.facebook != undefined) {
+          this.hasFacebook = true    
+        }
+
+        if(this.profile.twitter != undefined) {
+          this.hasTwitter = true
+        }
+
+        if(this.profile.summary != undefined) {
+          document.getElementById("summary").innerHTML = this.profile.summary
+        }
+
         if(this.profile.img == undefined) {
           document.getElementById('profile_pic').setAttribute('src',"../assets/me.jpg")
         }
@@ -42,7 +60,10 @@ export class ProfileComponent implements OnInit {
         }
       }
     )
+    this.getUserFriends()
+  }
 
+  getUserFriends() {
     this.profileService.getFriends().subscribe(
       response => {
                     this.friends = response
@@ -53,19 +74,16 @@ export class ProfileComponent implements OnInit {
                   },
       error => console.log(error)
     )
-
-    
-    
   }
 
-  sendFriendRequest() {
-    this.profileService.sendFriendRequest(this.username).subscribe(
-      response => {
-        //console.log("request sent")
-      },
-      error => console.log(error)
-    ) 
-  }
+  // sendFriendRequest() {
+  //   this.profileService.sendFriendRequest(this.username).subscribe(
+  //     response => {
+  //       //console.log("request sent")
+  //     },
+  //     error => console.log(error)
+  //   ) 
+  // }
 
   getProfileDetails(username) {
     //console.log(this.friends)
@@ -95,13 +113,59 @@ export class ProfileComponent implements OnInit {
 
   editProfile() {
     document.getElementById('summary').contentEditable="true";
-    document.getElementById('edit_tag').style.display = "inline-block";
   }
 
   updateImage(files) {
     this.profileService.updateImage(files[0]).subscribe(
-      response => console.log("success"),
+      response => {
+        this.getUserProfilePage()
+      },
       error => console.log(error)
     )
   };
+
+  updateSummary() {
+    var new_summary = document.getElementById("summary").innerHTML;
+    this.profileService.sendSummary(new_summary).subscribe(
+      response => {
+        console.log("summary updated")
+      }
+    )
+  }
+
+  updateFacebook() {
+    var link = (<HTMLInputElement>document.getElementById("fbLink")).value
+    this.profileService.updateFacebook(link).subscribe(
+      response => {
+        this.hasFacebook = true
+        this.getUserProfilePage()
+      },
+      error => console.log(error)
+    )
+  }
+
+  updateTwitter() {
+    var link = (<HTMLInputElement>document.getElementById("twtrLink")).value
+    this.profileService.updateTwitter(link).subscribe(
+      response => {
+        this.hasTwitter = true
+        this.getUserProfilePage()
+      },
+      error => console.log(error)
+    )
+  }
+
+  showButtons() {
+    let allButtons = document.getElementsByClassName("hidden") as HTMLCollectionOf<HTMLElement>;
+    for(var i = 0; i < allButtons.length; i++) {
+      allButtons[i].style.display = "inline-block";
+    }
+  }
+
+  hideButtons() {
+    let allButtons = document.getElementsByClassName("hidden") as HTMLCollectionOf<HTMLElement>;
+    for(var i = 0; i < allButtons.length; i++) {
+      allButtons[i].style.display = "none";
+    }
+  }
 }

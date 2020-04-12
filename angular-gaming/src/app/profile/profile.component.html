@@ -1,18 +1,29 @@
 <div class="body">
     <div class="center">
+        <button (click)=showButtons()>Edit Info</button>
+        <button (click)=hideButtons()>Done</button>
         <div class="avatar">
             <img id="profile_pic" (click)=openfileDialog()>
         </div>
         <div class="content">
             <h1>{{profile.firstname}} {{profile.lastname}}</h1>
             <p id="summary" class="summary" (click)=editProfile()>I love gaming.</p>
-            <button id="edit_tag">Update</button>
+            <button class="hidden" id="edit_tag" (click)="updateSummary()">Update</button>
         </div>
         <div class="social">
-            <a href="#"><i class="fab fa-mail"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <div *ngIf="hasFacebook || hasTwitter">You can find me at</div>
+            <a *ngIf="hasFacebook" id="fb" href={{profile.facebook}} target="_blank"><i class="fab fa-facebook"></i></a>
+            <a *ngIf="hasTwitter" id="twtr" href={{profile.twitter}} target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
+        <div class="hidden">
+            <span>Enter facebook profile link</span><input type="text" id="fbLink">
+            <button class="hidden" id="fb_update" (click)="updateFacebook()">Update</button>
+            <br>
+            <span>Enter twitter profile link</span><input type="text" id="twtrLink">
+            <button class="hidden" id="twtr_update" (click)="updateTwitter()">Update</button>
+            <br> 
+       </div>
+        <br>
         <div *ngIf="hasFriends">
             {{profile.firstname}}'s Friends
             <div id="friends">
