@@ -31,7 +31,7 @@ export class RequestsComponent implements OnInit {
   }
 
   addFriendRequest(index) {
-    document.getElementById("requestBox").style.display = 'none'
+    document.getElementById(`request${index}`).style.display = 'none'
     this.requestsService.addFriend(this.requests[index]).subscribe(
       response => console.log("Friend Added"),
       error => console.log(error)
@@ -39,12 +39,10 @@ export class RequestsComponent implements OnInit {
   }
 
   rejectFriendRequest(index) {
-    document.getElementById("requestBox").style.display = 'none'
+    document.getElementById(`request${index}`).style.display = 'none'
     this.requestsService.rejectFriend(this.requests[index]).subscribe(
       response => console.log("Friend Removed"),
       error => console.log(error)
     )
   }
-
-
 }
