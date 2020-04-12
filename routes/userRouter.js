@@ -84,7 +84,7 @@ router.get("/profile/:username", verifyToken, (req, res)=>{
   });
 });
 
-router.get("/friendslist", verifyToken, (req, res)=>{
+router.post("/friendslist", verifyToken, (req, res)=>{
   User.getUserByUserName(req.body.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
