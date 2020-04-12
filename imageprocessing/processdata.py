@@ -11,7 +11,7 @@ print(r.json())
 physical_devices = tf.config.list_physical_devices('GPU') 
 tf.config.experimental.set_memory_growth(physical_devices[0], True) 
 
-with open('data.json', "r") as f:
+with open('data.json', "r") as f: 
     data = json.load(f)
 
 placeholderimage = cv2.imread(os.path.join("..", "angular-gaming", "src", "assets", "profile_pic.jpg"))
@@ -28,9 +28,6 @@ for user in data:
             #convert the image from RGBA2RGB
             user['image'] = cv2.cvtColor(user['image'], cv2.COLOR_BGRA2BGR)
         print(user['username'])
-
-
-
 
 base_model = tf.keras.applications.MobileNetV2(input_shape=(300, 300, 3),
                                                include_top=False,
@@ -57,3 +54,6 @@ for user in data:
 
 with open("data.json", "w") as f:
     json.dump(data, f, indent = 6)
+
+r = requests.get(url = "http://localhost:4000/user/updateusers")
+print(r.status_code)

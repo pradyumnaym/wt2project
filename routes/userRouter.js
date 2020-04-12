@@ -229,6 +229,15 @@ router.get('/allusers', (req, res)=>{
 
 router.get('/updateusers', (req, res)=>{
   res.sendStatus(201);
-  
+  let data = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "imageprocessing", "data.json")))
+  data.forEach(user =>{
+    User.getUserByUserName(user.username, (err, duser)=>{
+      if(err) throw err;
+      duser.friends = user.friends;
+      duser.markModified("friends");
+      duser.save();
+    });
+  });
+  return res.sendStatus(200);
 })
 module.exports = router;
