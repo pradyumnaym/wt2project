@@ -228,7 +228,6 @@ router.get('/allusers', (req, res)=>{
 });
 
 router.get('/updateusers', (req, res)=>{
-  res.sendStatus(201);
   let data = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "imageprocessing", "data.json")))
   data.forEach(user =>{
     User.getUserByUserName(user.username, (err, duser)=>{

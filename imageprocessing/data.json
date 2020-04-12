@@ -7,7 +7,9 @@
       {
             "username": "abe123",
             "img": "5e92f87f3b3ad31e7ec789a0",
-            "friends": []
+            "friends": [
+                  "testera"
+            ]
       },
       {
             "username": "testera",
@@ -15,7 +17,8 @@
             "friends": [
                   "testerb",
                   "testerd",
-                  "testerc"
+                  "testerc",
+                  "abe123"
             ]
       },
       {
