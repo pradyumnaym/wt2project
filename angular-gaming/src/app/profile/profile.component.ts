@@ -88,4 +88,20 @@ export class ProfileComponent implements OnInit {
       error => console.log(error)
     )
   }
+
+  openfileDialog() {
+    document.getElementById("imageUpload").click();
+  }
+
+  editProfile() {
+    document.getElementById('summary').contentEditable="true";
+    document.getElementById('edit_tag').style.display = "inline-block";
+  }
+
+  updateImage(files) {
+    this.profileService.updateImage(files[0]).subscribe(
+      response => console.log("success"),
+      error => console.log(error)
+    )
+  };
 }

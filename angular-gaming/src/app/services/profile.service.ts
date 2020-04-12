@@ -10,7 +10,8 @@ export class ProfileService {
   _profilePicUrl = "http://localhost:4000/images/profilepic";
   _sendFriendRequestUrl = "http://localhost:4000/user/sendrequest";
   _getFriendList = 'http://localhost:4000/user/friendslist';
-  _getprofileUrl = 'http://localhost:4000/user/profile/'
+  _getprofileUrl = 'http://localhost:4000/user/profile/';
+  _updateImageUrl = 'http://localhost:4000/user/updateimage';
 
   constructor(
     private http:HttpClient
@@ -35,4 +36,11 @@ export class ProfileService {
   getProfile(username) {
     return this.http.get<any>(`${this._getprofileUrl}${username}`)
   }
+
+  updateImage(img) {
+    var fd = new FormData();
+    fd.append("img",img);
+    return this.http.post<any>(this._updateImageUrl, fd);
+  }
+
 }

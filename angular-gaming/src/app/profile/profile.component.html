@@ -1,12 +1,12 @@
 <div class="body">
     <div class="center">
         <div class="avatar">
-            <img id="profile_pic">
+            <img id="profile_pic" (click)=openfileDialog()>
         </div>
         <div class="content">
             <h1>{{profile.firstname}} {{profile.lastname}}</h1>
-            <p class="summary">I am cool people drool. You fool, you are old school.</p>
-            <button class="edit_tag">Edit</button>
+            <p id="summary" class="summary" (click)=editProfile()>I love gaming.</p>
+            <button id="edit_tag">Update</button>
         </div>
         <div class="social">
             <a href="#"><i class="fab fa-mail"></i></a>
@@ -29,4 +29,5 @@
         </div>
     </div>
 </div>
+<input id="imageUpload" type="file" name="image" accept="image/*" (change)="updateImage($event.target.files)">
 

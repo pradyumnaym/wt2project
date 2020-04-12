@@ -49,7 +49,8 @@ h1 {
 }
 
 .content h2,p{
-    font-weight: lighter;
+    font-weight: light;
+    font-size: 15px;
     letter-spacing: 1px;
     width: 70%;
     margin: 10px auto;
@@ -81,10 +82,15 @@ div.social i:hover {
     height: 100px;
 }
 
-.edit_tag {
+#edit_tag {
     display: none;
 }
 
-.summary:hover + .edit_tag, .edit_tag:hover {
-    display: inline-block;
+#profile_pic:hover {
+    border: 3px solid gray;
+    opacity: 0.7;
+}
+
+#imageUpload {
+    display:none;
 }
