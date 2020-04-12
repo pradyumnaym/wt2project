@@ -9,7 +9,6 @@ export class ProfileService {
   _userDetailsUrl = "http://localhost:4000/user/userdetails";
   _profilePicUrl = "http://localhost:4000/images/profilepic";
   _sendFriendRequestUrl = "http://localhost:4000/user/sendrequest";
-  _addFriendUrl = 'http://localhost:4000/user/addfriend';
   _getFriendList = 'http://localhost:4000/user/friendslist';
   _getprofileUrl = 'http://localhost:4000/user/profile/'
 
@@ -27,10 +26,6 @@ export class ProfileService {
 
   sendFriendRequest(username) {
     return this.http.post<any>(this._sendFriendRequestUrl, {'username': username})
-  }
-
-  addFriend(username) {
-    return this.http.post<any>(this._addFriendUrl, {'username': username})
   }
 
   getFriends() {

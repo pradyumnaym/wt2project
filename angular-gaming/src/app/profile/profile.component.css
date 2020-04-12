@@ -80,3 +80,11 @@ div.social i:hover {
     width: 100px;
     height: 100px;
 }
+
+.edit_tag {
+    display: none;
+}
+
+.summary:hover + .edit_tag, .edit_tag:hover {
+    display: inline-block;
+}

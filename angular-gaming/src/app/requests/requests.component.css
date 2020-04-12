@@ -1,0 +1,12 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css);
+
+.requestBox {
+    background-color: gray;
+    border-style: solid;
+}
+
+#requestMessage {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+}

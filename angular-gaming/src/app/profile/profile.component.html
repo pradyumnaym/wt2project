@@ -5,14 +5,15 @@
         </div>
         <div class="content">
             <h1>{{profile.firstname}} {{profile.lastname}}</h1>
-            <p>I am cool people drool. You fool, you are old school.</p>
+            <p class="summary">I am cool people drool. You fool, you are old school.</p>
+            <button class="edit_tag">Edit</button>
         </div>
         <div class="social">
             <a href="#"><i class="fab fa-mail"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-        <div>
+        <div *ngIf="hasFriends">
             {{profile.firstname}}'s Friends
             <div id="friends">
                 <div class="row row-list">
@@ -22,6 +23,9 @@
                     </div>
                 </div>   
             </div>
+        </div>
+        <div *ngIf="hasFriends == false">
+            You haven't made any friends yet
         </div>
     </div>
 </div>

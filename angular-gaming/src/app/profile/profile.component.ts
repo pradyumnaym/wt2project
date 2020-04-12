@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ProfileComponent implements OnInit {
 
+  hasFriends:boolean = false
   profile:any = {}
   profilePic:any = {}
   friends:any[]
@@ -46,6 +47,7 @@ export class ProfileComponent implements OnInit {
       response => {
                     this.friends = response
                     for(var i=0;i<3 && i<this.friends.length;i++) {
+                      this.hasFriends = true
                       this.getProfileDetails(this.friends[i])
                     }
                   },
@@ -64,14 +66,6 @@ export class ProfileComponent implements OnInit {
       error => console.log(error)
     ) 
   }
-
-  addFriendRequest() {
-    this.profileService.addFriend(this.friend).subscribe(
-      response => console.log("Friend Added"),
-      error => console.log(error)
-    )
-  }
-
 
   getProfileDetails(username) {
     //console.log(this.friends)
