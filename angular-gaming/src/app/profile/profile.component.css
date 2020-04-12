@@ -82,7 +82,7 @@ div.social i:hover {
     height: 100px;
 }
 
-#edit_tag {
+.hidden {
     display: none;
 }
 
