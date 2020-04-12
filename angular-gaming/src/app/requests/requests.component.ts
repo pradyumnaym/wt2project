@@ -7,7 +7,8 @@ import {RequestsService} from '../services/requests.service';
   styleUrls: ['./requests.component.css']
 })
 export class RequestsComponent implements OnInit {
-  requests = {}
+  hasRequests:boolean = false
+  requests:any[]
   constructor(
     private requestsService:RequestsService
   ) { }
@@ -19,8 +20,18 @@ export class RequestsComponent implements OnInit {
   getRequests() {
     this.requestsService.getFriendRequests().subscribe(
       response => {this.requests = response
-        console.log(response)
+        if(this.requests.length > 0) {
+          this.hasRequests = true
+        }
+        console.log(this.requests)
       },
+      error => console.log(error)
+    )
+  }
+
+  addFriendRequest(index) {
+    this.requestsService.addFriend(this.requests[index]).subscribe(
+      response => console.log("Friend Added"),
       error => console.log(error)
     )
   }

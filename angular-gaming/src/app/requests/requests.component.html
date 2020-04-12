@@ -1,4 +1,18 @@
 <div>
-    <h2>Friend Requests</h2>
-    {{requests}}
+    <div>
+        <h2 *ngIf="hasRequests == false">You currently have no friend requests</h2>
+        <h2 *ngIf="hasRequests">Friend Requests</h2>
+    </div>
+    <div *ngIf="hasRequests">
+        <div *ngFor="let request of requests;let i = index;">
+            <div class="requestBox" id="request{{i}}">
+                <span id="requestMessage">{{request}} wants to be friends with you.</span>
+                <div id="container">
+                    <button (click)="addFriendRequest(i)">Accept</button>
+                    <button >Reject</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

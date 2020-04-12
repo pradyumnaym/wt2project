@@ -1,11 +1,13 @@
 <div>
   <ul>
-      <li ><a routerLink="/login">Login</a></li>
-      <li ><a routerLink="/register">Register</a></li>
-      <li ><a routerLink="/profile">Profile</a></li>
-      <li ><a routerLink="/home">Home</a></li>
-      <li ><a routerLink="/requests">Requests</a></li>
-      <li ><a routerLink="/blog">Blog</a></li>
+      <li *ngIf="isLogged==false"><a routerLink="/login">Login</a></li>
+      <li *ngIf="isLogged==false"><a routerLink="/register">Register</a></li>
+      <li *ngIf="isLogged"><a routerLink="/home" (click)="logout()">Logout</a></li>
+      <li *ngIf="isLogged"><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/home">Home</a></li>
+      <li *ngIf="isLogged"><a routerLink="/requests">Requests</a></li>
+      <li *ngIf="isLogged"><a routerLink="/blog">Blog</a></li>
+      
   </ul>
 
 </div>

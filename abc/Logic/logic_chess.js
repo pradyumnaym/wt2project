@@ -77,6 +77,7 @@ function getPositions() {
 
   xhttp.open("POST", "/api/getboard", true);
   xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.setRequestHeader("Authorization", `Bearer ${localStorage.getItem("token")}`)
   console.log("sent request for boardb");
   xhttp.send( JSON.stringify({
     "code" : code
@@ -102,8 +103,7 @@ function sendRequest() {
     true
   );
   xhttp.setRequestHeader("Content-type", "application/json");
-  //?code=" + code + "&op=set&pieces=" + JSON.stringify(pieces),
-  //alert(JSON.stringify(pieces));
+  xhttp.setRequestHeader("Authorization", `Bearer ${localStorage.getItem("token")}`)
   xhttp.send(JSON.stringify({
     "code" : code,
     "pieces" : JSON.stringify(pieces)

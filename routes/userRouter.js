@@ -1,13 +1,13 @@
 var express = require('express');
 const path = require('path');
-const User = require(path.join("..", "models", "User.js"))
-const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
 const jwt = require('jsonwebtoken');
 const formidable = require('formidable');
-const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
+var fs = require("fs")
 const bcrypt = require('bcryptjs');
 
-var fs = require("fs")
+const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
+const User = require(path.join("..", "models", "User.js"))
+const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
 
 var router = express.Router();
 
@@ -17,7 +17,7 @@ router.post("/login", (req, res)=>{
     User.getUserByUserName(givenUser.username, (err, usr)=>{
         if(err) throw err;
         if((usr != null) && (bcrypt.compareSync(givenUser.password, usr.password))){
-            jwt.sign({username : usr.username, img : usr.img}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
+            jwt.sign({username : usr.username}, "secret_key", {expiresIn: '1h'}, (err, token)=>{
                 if(err) throw err;
                 return res.status(200).json({
                     token
@@ -138,6 +138,18 @@ router.post("/addfriend", verifyToken, (req, res) =>{
   });
 });
 
+router.post("/rejectrequest", verifyToken, (req, res) =>{
+  if(!req.body.username) return res.sendStatus(405);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user['friendrequests'].splice(user['friendrequests'].indexOf(req.body.username), 1)
+    user.markModified("friendrequests");
+    user.save(err=>console.log(err));
+    return res.status(200).json({});
+  });
+});
+
 router.post("/addfacebook", verifyToken, (req, res) => {
   if(!req.body.link) return res.sendStatus(405);
   User.getUserByUserName(req.user.username, (err, user) =>{
@@ -175,5 +187,30 @@ router.post("/addsummary", verifyToken, (req, res) => {
 });
 
 
+router.post("/updateimage", verifyToken, (req, res)=>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    new formidable.IncomingForm().parse(req, (err, fields, files) => {
+      if (err) {
+        throw err
+      }
+      if(files && files['file']){
+        img = fs.readFileSync(files['file'].path) 
+        type = files['file'].type;
+        if(user.img){
+          ProfilePic.removeImage(user.img)
+        }
+        ProfilePic.addImage(img, type, id =>{
+          user['img'] = id;
+          user.save();
+          return res.status(200).json({});
+        })
+      }else{
+        return res.sendStatus(405);
+      }
+    })
+  });
+});
 
 module.exports = router;
