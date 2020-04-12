@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, SafePipe } from './app.component';
@@ -11,9 +12,22 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import {HomeComponent} from './home/home.component';
+
 import {AuthGuard} from './guards/auth.guard';
 import {TokenInterceptorService} from './services/token-interceptor.service';
 import { RequestsComponent } from './requests/requests.component';
+import {MatCardModule} from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {CardComponent} from './card/card.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { ThreestarsComponent } from './threestars/threestars.component';
+import { OnestarsComponent } from './onestars/onestars.component';
+import { TwostarsComponent } from './twostars/twostars.component';
+import { FourstarsComponent } from './fourstars/fourstars.component';
+import { FivestarsComponent } from './fivestars/fivestars.component';
+import { BlogComponent } from './blog/blog.component';
+import { FeedComponent } from './feed/feed.component';
 
 
 @NgModule({
@@ -25,13 +39,25 @@ import { RequestsComponent } from './requests/requests.component';
     HeaderComponent,
     HomeComponent,
     SafePipe,
-    RequestsComponent
+    RequestsComponent,
+    CardComponent,
+    CarouselComponent,
+    ThreestarsComponent,
+    OnestarsComponent,
+    TwostarsComponent,
+    FourstarsComponent,
+    FivestarsComponent,
+    BlogComponent,
+    FeedComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCardModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS,
