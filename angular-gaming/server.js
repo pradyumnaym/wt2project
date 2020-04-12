@@ -1,5 +1,7 @@
 const express = require('express');
-const app = express()
+const cors = require('cors');
+const app = express();
+app.use(cors());
 var Feed = require('rss-to-json');
 var feeds;
 Feed.load('https://www.gamespot.com/feeds/game-news/', function(err, rss){

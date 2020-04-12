@@ -1,2 +1,2 @@
-<p>blog works!</p>
-<app-feed></app-feed>
+<app-feed  *ngFor="let feed of feedsOfAllItems"
+[feed]="feed"></app-feed>
