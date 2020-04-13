@@ -5,7 +5,7 @@ const uuidv4 = require('uuid/v4');
 
 const Game = require(path.join("..", "models", "Game.js"));
 const User = require(path.join("..", "models", "User.js"));
-const Request = require(path.join("..", "models", "User.js"));
+const Request = require(path.join("..", "models", "Request.js"));
 
 
 api.post("/getboard", (req, res) => {

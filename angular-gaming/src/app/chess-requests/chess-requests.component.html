@@ -15,9 +15,12 @@
         <div class="popuptext" *ngIf="noRequests" id="requests">
             You have no requests
         </div>
-        <div class="popup" *ngIf="noRequests == false" id="requests">
+        <div class="popuptext" *ngIf="noRequests == false" id="requests">
             <div *ngFor="let request of requests;let i = index">
-            
+                <span>{{request.accepted}}</span>
+            </div>
+            <div>
+
             </div>
         </div>
     </div>

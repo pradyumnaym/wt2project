@@ -12,6 +12,7 @@ export class ChessRequestsComponent implements OnInit {
   requests:any = {}
   friends = []
   noRequests:boolean = true
+  noFriends:boolean = true
 
   constructor(
     private profileService:ProfileService,
@@ -52,7 +53,10 @@ export class ChessRequestsComponent implements OnInit {
         this.profileService.getFriends(user.username).subscribe( 
           response => {
               console.log(response)
-              this.friends = response  
+              if(response.length > 0) {
+                this.noFriends = false
+                this.friends = response
+              }  
           }
         )
       }
