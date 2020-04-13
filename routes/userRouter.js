@@ -242,13 +242,6 @@ router.get('/updateusers', (req, res)=>{
   return res.sendStatus(200);
 });
 
-router.get('/gamerequests', verifyToken, (req, res) =>{
-  User.getUserByUserName(req.user.username, (err, user) =>{
-    if(err) return res.sendStatus(500);
-    if(!user) return res.sendStatus(404);
-    return res.status(200).json(user.gamerequests);
-  });
-});
 
 router.get('/gamerequests', verifyToken, (req, res) =>{
   User.getUserByUserName(req.user.username, (err, user) =>{
