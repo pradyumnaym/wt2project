@@ -14,6 +14,6 @@ module.exports.getRequestByRequestId = (reqid, callback) => {
 };
 
 module.exports.addRequest = (request, callback) => {
-  var r = new Request(user);
+  var r = new Request(request);
   r.save(callback);
 };
