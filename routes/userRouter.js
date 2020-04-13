@@ -44,6 +44,7 @@ router.post("/register", (req, res)=>{
       newuser["achievements"] = []
       newuser["games"] = []
       newuser["friendrequests"] = []
+      newuser["gamerequests"] = []
       newuser["password"] = bcrypt.hashSync(newuser["password"], 10)
 
       if(files && files['file']){
@@ -88,7 +89,6 @@ router.post("/friendslist", verifyToken, (req, res)=>{
   console.log(req.body.username);
   User.getUserByUserName(req.body.username, (err, user) =>{
     if(err) return res.sendStatus(500);
-    console.log(user);
     if(!user) return res.sendStatus(404);
     var {friends} = user;
     return res.status(200).json(friends);
@@ -240,5 +240,32 @@ router.get('/updateusers', (req, res)=>{
     });
   });
   return res.sendStatus(200);
-})
+});
+
+router.get('/gamerequests', verifyToken, (req, res) =>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    return res.status(200).json(user.gamerequests);
+  });
+});
+
+router.get('/gamerequests', verifyToken, (req, res) =>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    return res.status(200).json(user.gamerequests);
+  });
+});
+
+router.delete('/gamerequests', verifyToken, (req, res) =>{
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) return res.sendStatus(500);
+    if(!user) return res.sendStatus(404);
+    user.gamerequests = []
+    user.markModified("gamerequests");
+    user.save();
+    return res.status(200).json([]);
+  });
+});
 module.exports = router;

@@ -12,8 +12,8 @@ const UserSchema = new mongoose.Schema({
   summary : {type : String, required : false},
   friends: {type : mongoose.Schema.Types.Mixed, required : true},
   friendrequests: {type : mongoose.Schema.Types.Mixed, required : true},
-  achievements: {type : mongoose.Schema.Types.Mixed, required : true},
   games: {type : mongoose.Schema.Types.Mixed, required : true},
+  gamerequests : {type : mongoose.Schema.Types.Mixed, required : true}
 });
 
 var User = (module.exports = mongoose.model("User", UserSchema));
