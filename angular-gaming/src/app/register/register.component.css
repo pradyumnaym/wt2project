@@ -180,6 +180,10 @@ input[type='submit'] {
 
 .login input[type='password']:focus,
 .login input[type='password']:hover,
+.login input[type='email']:focus,
+.login input[type='email']:hover,
+.login input[type='file']:focus,
+.login input[type='file']:hover,
 .login input[type='text']:focus,
 .login input[type='text']:hover {
   background-color: #434a52;
@@ -199,7 +203,7 @@ input[type='submit'] {
   background-color: #d44179;
 }
 
-/* modules/text.css */
+
 
 p {
   margin-bottom: 24px;
