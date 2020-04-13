@@ -20,8 +20,8 @@
                 <span>{{request.from}}</span><br>
                 <span>{{request.to}}</span><br>
                 <span>{{request.accepted}}</span><br>
-                <span>../../assets/Chess/chess.html{{request.reqid}}</span>
-                <button (click)=acceptRequest(request.reqid)>Accept Request</button>
+                <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=">Link to game</a>
+                <button (click)=acceptRequest(request.id)>Accept Request</button>
             </div>
             <div>
 

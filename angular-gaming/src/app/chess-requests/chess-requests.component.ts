@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../services/profile.service'
 import {ChessService} from '../services/chess.service'
 import { VirtualTimeScheduler, of } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-chess-requests',
@@ -12,6 +13,7 @@ export class ChessRequestsComponent implements OnInit {
   requests = []
   friends = []
   requestObjects = []
+  username = ''
   noRequests:boolean = true
   noFriends:boolean = true
 
@@ -58,6 +60,7 @@ export class ChessRequestsComponent implements OnInit {
   getFriends() {
     this.profileService.getUserDetails().subscribe(
       user => {
+        this.username = user.username
         this.profileService.getFriends(user.username).subscribe( 
           response => {
               console.log(response)

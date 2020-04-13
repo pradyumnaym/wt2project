@@ -19,8 +19,18 @@ var getinterval;
 
 window.onload = buildTable;
 
-var code = prompt("Enter the game code");
-var thisPlayer = prompt("Enter the pawn You would like to control");
+`var code = prompt("Enter the game code");
+var thisPlayer = prompt("Enter the pawn You would like to control");`
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
+var code = getUrlVars()["code"]
+var thisPlayer = getUrlVars()["color"]
+
 var isThisPlayersTurn = thisPlayer == "w" ? 1 : 0;
 if (thisPlayer == "b") {
   getinterval = setInterval(getPositions, 500);

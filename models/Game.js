@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Game1 = new mongoose.Schema({
-  id: Number,
+  id: String,
   w: mongoose.Schema.Types.Mixed,
   b: mongoose.Schema.Types.Mixed,
   wt: Number,
