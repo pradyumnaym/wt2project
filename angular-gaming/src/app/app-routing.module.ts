@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'requests', component: RequestsComponent,canActivate: [AuthGuard]},
   {path: 'blog', component: BlogComponent},
   {path: 'friends', component: FriendsComponent,canActivate: [AuthGuard]},
-  {path: 'search', component: SearchComponent,canActivate: [AuthGuard]}
+  {path: 'search/:username', component: SearchComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({

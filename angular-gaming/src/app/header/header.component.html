@@ -8,7 +8,7 @@
       <li *ngIf="isLogged"><a routerLink="/requests">Requests</a></li>
       <li *ngIf="isLogged"><a routerLink="/blog">Blog</a></li>
       <li *ngIf="isLogged"><a routerLink="/friends">Friends</a></li>
-      <li *ngIf="isLogged"><a routerLink="/search">Search</a></li>
+      <li *ngIf="isLogged"><a [routerLink]="['/search','search']">Search</a></li>
   </ul>
 </div>
 

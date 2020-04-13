@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../services/profile.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
-import { element } from 'protractor';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +24,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private profileService:ProfileService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router:Router
   ) { }
 
   ngOnInit():void {
@@ -151,5 +151,9 @@ export class ProfileComponent implements OnInit {
     for(var i = 0; i < allButtons.length; i++) {
       allButtons[i].style.display = "none";
     }
+  }
+
+  Search(name) {
+    this.router.navigate(['/search',name])
   }
 }

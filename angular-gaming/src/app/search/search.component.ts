@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../services/search.service'
+import {Router,ActivatedRoute} from '@angular/router'
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -17,16 +18,25 @@ export class SearchComponent implements OnInit {
   friends:any = {}
 
   constructor(
-    private searchService:SearchService
+    private searchService:SearchService,
+    private activatedRoute:ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
+    let name = this.activatedRoute.snapshot.paramMap.get('username')
+    if(name != 'search')
+      this.searchUser(name)
   }
 
-  searchUser() {
+  getUsername() {
     document.getElementById('profile_body').style.visibility = 'hidden';
     this.username = (<HTMLInputElement>document.getElementById('username')).value
-    this.updateProfileDetails(this.username)
+    this.searchUser(name)
+  }
+
+  searchUser(name) { 
+    this.updateProfileDetails(name)
   }
 
   updateProfileDetails(username) {
@@ -34,7 +44,8 @@ export class SearchComponent implements OnInit {
       user => {
         document.getElementById('profile_body').style.visibility = 'visible';
         this.profile = user
-        console.log(user)
+        console.log(user.username)
+        this.getUserFriends(username)
         
         if(this.profile.facebook != undefined) {
           this.hasFacebook = true    
@@ -56,7 +67,6 @@ export class SearchComponent implements OnInit {
         }
       }
     )
-    this.getUserFriends(this.username)
   }
 
   getUserFriends(username) {
@@ -95,5 +105,9 @@ export class SearchComponent implements OnInit {
       },
       error => console.log(error)
     ) 
+  }
+
+  Search(friend) {
+    this.searchUser(friend)
   }
 }

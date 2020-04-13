@@ -29,8 +29,8 @@
             <div id="friends">
                 <div class="row row-list">
                     <div class="col-sm" *ngFor="let friend of friends | slice:0:3;">
-                        <img id="img_{{friend}}" class="friend_img"><br>
-                        <a href="#" id="name_{{friend}}" class="friend_link"></a>
+                        <a [routerLink]="['/search',friend]"><img id="img_{{friend}}" class="friend_img"><br></a>
+                        <a [routerLink]="['/search',friend]" id="name_{{friend}}" class="friend_link"></a>
                     </div>
                 </div>   
             </div>
