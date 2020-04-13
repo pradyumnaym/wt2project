@@ -57,7 +57,7 @@ api.post('/sendrequest', (req, res)=>{
 });
 
 api.post('/acceptrequest', (req, res) =>{
-  if(!req.body.reqid) return sendStatus(400);
+  if(!req.body.reqid) return res.sendStatus(400);
   Request.getRequestByRequestId(req.body.reqid, (err, request)=>{
     if(err) throw err;
     if(!request) return res.sendStatus(404);

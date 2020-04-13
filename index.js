@@ -23,7 +23,7 @@ app.use(cors());
 app.use(express.static("./abc"));
 app.use(express.json());
 app.get('/request/:reqid', verifyToken, (req, res)=>{
-  Request.getRequestByRequesId(req.params.reqid, (err, request)=>{
+  Request.getRequestByRequestId(req.params.reqid, (err, request)=>{
     if(err) throw err;
     if(!request) return res.sendStatus(404);
     var {reqid, from, to, accepted} = request;

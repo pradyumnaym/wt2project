@@ -16,8 +16,12 @@
             You have no requests
         </div>
         <div class="popuptext" *ngIf="noRequests == false" id="requests">
-            <div *ngFor="let request of requests;let i = index">
-                <span>{{request.accepted}}</span>
+            <div *ngFor="let request of requestObjects;let i = index">
+                <span>{{request.from}}</span><br>
+                <span>{{request.to}}</span><br>
+                <span>{{request.accepted}}</span><br>
+                <span>../../assets/Chess/chess.html{{request.reqid}}</span>
+                <button (click)=acceptRequest(request.reqid)>Accept Request</button>
             </div>
             <div>
 

@@ -9,8 +9,9 @@ import { VirtualTimeScheduler, of } from 'rxjs';
   styleUrls: ['./chess-requests.component.css']
 })
 export class ChessRequestsComponent implements OnInit {
-  requests:any = {}
+  requests = []
   friends = []
+  requestObjects = []
   noRequests:boolean = true
   noFriends:boolean = true
 
@@ -30,6 +31,13 @@ export class ChessRequestsComponent implements OnInit {
         this.requests = response
         if(response != null) {
           this.noRequests = false
+          for(var i = 0;i < response.length;i++) {
+            this.chessService.getRequestDetails(response[i]).subscribe(
+              response => {
+                this.requestObjects.push(response)
+              }
+            )
+          }
         }
       }
     )
@@ -56,6 +64,7 @@ export class ChessRequestsComponent implements OnInit {
               if(response.length > 0) {
                 this.noFriends = false
                 this.friends = response
+                console.log(this)
               }  
           }
         )
