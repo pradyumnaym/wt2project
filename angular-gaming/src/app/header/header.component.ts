@@ -7,7 +7,7 @@ import {AuthenticateService} from '../services/authenticate.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLogged:boolean = true
+  isLogged:boolean = true;
   constructor(
     private authenticateService:AuthenticateService
   ) { }
