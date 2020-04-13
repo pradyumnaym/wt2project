@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   hasFacebook:boolean = false
   hasTwitter:boolean = false
   hasSummary:boolean = false
-  notFriend:boolean = false
+  notFriend:boolean = true
   friends:any = {}
 
   constructor(
@@ -24,15 +24,17 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let name = this.activatedRoute.snapshot.paramMap.get('username')
-    if(name != 'search')
-      this.searchUser(name)
+    this.activatedRoute.params.subscribe(
+      routeParams => {
+        let name = routeParams.username
+        this.searchUser(name)
+      })   
   }
 
   getUsername() {
     document.getElementById('profile_body').style.visibility = 'hidden';
     this.username = (<HTMLInputElement>document.getElementById('username')).value
-    this.searchUser(name)
+    this.searchUser(this.username)
   }
 
   searchUser(name) { 
@@ -98,8 +100,8 @@ export class SearchComponent implements OnInit {
         )
     }
 
-  sendFriendRequest() {
-    this.searchService.sendFriendRequest(this.username).subscribe(
+  sendFriendRequest(name) {
+    this.searchService.sendFriendRequest(name).subscribe(
       response => {
         console.log("request sent")
       },

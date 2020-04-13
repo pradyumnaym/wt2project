@@ -30,6 +30,7 @@ import { BlogComponent } from './blog/blog.component';
 import { FeedComponent } from './feed/feed.component';
 import { FriendsComponent } from './friends/friends.component';
 import { SearchComponent } from './search/search.component';
+import { ChessRequestsComponent } from './chess-requests/chess-requests.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SearchComponent } from './search/search.component';
     BlogComponent,
     FeedComponent,
     FriendsComponent,
-    SearchComponent
+    SearchComponent,
+    ChessRequestsComponent
 
   ],
   imports: [

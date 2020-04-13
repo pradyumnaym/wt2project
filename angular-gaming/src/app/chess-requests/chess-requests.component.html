@@ -1,0 +1,25 @@
+<div style="text-align:center;">
+    <br><br><br><br>
+    <div class="popup" (click)="inviteShow()">
+        Invite Friends
+        <div class="popuptext" id="inviteFriends">
+            <div *ngFor="let friend of friends;let i = index">
+                <span id="send_{{friend}}">{{friend}}</span>
+                <button (click)="sendRequest(friend)">Send Request</button>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="popup" (click)="requestShow()">
+        Requests
+        <div class="popuptext" *ngIf="noRequests" id="requests">
+            You have no requests
+        </div>
+        <div class="popup" *ngIf="noRequests == false" id="requests">
+            <div *ngFor="let request of requests;let i = index">
+            
+            </div>
+        </div>
+    </div>
+</div>
+

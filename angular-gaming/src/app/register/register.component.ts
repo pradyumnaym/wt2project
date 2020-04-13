@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticateService} from '../services/authenticate.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
   }
 
   constructor(
-    private authenticateService:AuthenticateService
+    private authenticateService:AuthenticateService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class RegisterComponent implements OnInit {
       user => console.log(user),
       error => console.log(error)
     )
-
+    this.router.navigate(['/login'])
   }
 
   addFile(files) {

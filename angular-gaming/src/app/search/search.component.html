@@ -4,7 +4,7 @@
 </div>
 <div class="body" id="profile_body">
     <div class="center">
-        <button *ngIf="notFriend" (click)="sendFriendRequest()">Add Friend</button>
+        <button *ngIf="notFriend" (click)="sendFriendRequest(username)">Add Friend</button>
         <div class="avatar">
             <img id="profile_pic">
         </div>
@@ -23,8 +23,8 @@
             <div id="friends">
                 <div class="row row-list">
                     <div class="col-sm" *ngFor="let friend of friends | slice:0:3;">
-                        <a (click)="Search(friend)"><img id="img_{{friend}}" class="friend_img"></a><br>
-                        <a (click)="Search(friend)" id="name_{{friend}}" class="friend_link"></a>
+                        <a [routerLink]="['/search',friend]"><img id="img_{{friend}}" class="friend_img"></a><br>
+                        <a [routerLink]="['/search',friend]" id="name_{{friend}}" class="friend_link"></a>
                     </div>
                 </div>   
             </div>

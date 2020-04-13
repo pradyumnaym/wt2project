@@ -4,8 +4,8 @@
 <div *ngIf="hasFriends">
     <div class="friendBox" *ngFor="let friend of friends;let i = index;">
         <div class="row row-list" id="friend{{i}}">
-            <img class="friendImg" id="{{friend}}_img">
-            <span class="friendName" id="{{friend}}_name">{{friend}}</span>
+            <a [routerLink]="['/search',friend]"><img class="friendImg" id="{{friend}}_img"></a>
+            <a [routerLink]="['/search',friend]"><span class="friendName" id="{{friend}}_name">{{friend}}</span></a>
         </div>
     </div>
 </div>
