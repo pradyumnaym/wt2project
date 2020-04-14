@@ -25,7 +25,10 @@
   <app-fourstars *ngIf="games.rating === 4"></app-fourstars>
   <app-fivestars *ngIf="games.rating === 5"></app-fivestars>
   </div>
-  <img src = {{games.imgUrl}} width="350px" height="300px">
-  <div class="topright" style="color: antiquewhite;">{{games.desc}}</div>
-  <div class="bottomright"><button class="button"><a href={{games.src}} style="color: red;">Play</a></button></div>  
+  <br><br>
+  <button class="btn-3 draw-border-3"><img src = {{games.imgUrl}} width="350px" height="300px"></button>
+  <div class="topright" style="color: antiquewhite;"><button class="btn-2 draw-border-2">{{games.desc}}</button></div>
+  <br><br>
+  <div class="bottomright" ><a href={{games.src}} style="text-decoration:none"><button class="btn draw-border">Play Now</button></a></div>
+<br><br><br><br><br><br>
 </div>
