@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css','./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
 
@@ -38,9 +38,9 @@ export class ProfileComponent implements OnInit {
         this.profile = user
         this.username = user.username
         console.log(user)
-        
+
         if(this.profile.facebook != undefined) {
-          this.hasFacebook = true    
+          this.hasFacebook = true
         }
 
         if(this.profile.twitter != undefined) {

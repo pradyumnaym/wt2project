@@ -1,15 +1,20 @@
+<body style="background-color: black;">
 <div id="outer_div">
     <div class="container"  id="inner_div">
         <div *ngIf="hasFriends==false">
             <h2><p>You currently have no friends</p></h2>
         </div>
         <div *ngIf="hasFriends">
-            <div class="friendBox" *ngFor="let friend of friends;let i = index;">
-                <div>
+            <div class="friendBox " *ngFor="let friend of friends;let i = index;" style="background-color: black;border-width: 0ch;margin: 40px;">
+
+              <div>
+                    <a [routerLink]="['/search',friend]" style="text-decoration:none">
+                    <button class="btn draw-border">
                     <a [routerLink]="['/search',friend]"><img class="friendImg" id="{{friend}}_img"></a>
-                    <a [routerLink]="['/search',friend]"><span class="friendName" id="{{friend}}_name">{{friend}}</span></a>
-                </div>
+                    <a [routerLink]="['/search',friend]"><span class="friendName" id="{{friend}}_name" style="color: red;">{{friend}}</span></a>
+                  </button></a> </div>
             </div>
         </div>
     </div>
 </div>
+</body>
