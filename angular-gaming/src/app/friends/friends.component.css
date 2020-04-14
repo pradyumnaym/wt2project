@@ -2,17 +2,22 @@
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css);
 
 .friendBox {
-    background-color: lightgray;
+    background-color: white;
+    border: solid 1px lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .friendImg {
-    width:100px;
-    height: 100px;
+    width:75px;
+    height: 75px;
+    margin: 0px 20px 0px 0px;
 }
 
 .friendName{
-    color: black;
+    color:blue;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: normal;
+    font-size: 15px;
+    font-weight: 600;
+    vertical-align: middle;
 }
