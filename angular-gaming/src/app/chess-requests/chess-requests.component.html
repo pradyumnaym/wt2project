@@ -3,9 +3,10 @@
     <div class="popup" (click)="inviteShow()">
         Invite Friends
         <div class="popuptext" id="inviteFriends">
-            <div *ngFor="let friend of friends;let i = index">
-                <span id="send_{{friend}}">{{friend}}</span>
-                <button (click)="sendRequest(friend)">Send Request</button>
+            <div *ngFor="let friend of friendObjects;let i = index">
+                <span id="send_{{friend.name}}">{{friend.name}}</span>
+                <button *ngIf="friend.hasRequest == false" (click)="sendRequest(friend.name)">Send Request</button>
+                <span *ngIf="friend.hasRequest"> Request Pending</span>
             </div>
         </div>
     </div>

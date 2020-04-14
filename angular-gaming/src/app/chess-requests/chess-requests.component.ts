@@ -14,6 +14,7 @@ export class ChessRequestsComponent implements OnInit {
   requests = []
   friends = []
   requestObjects = []
+  friendObjects = []
   username = ''
   noRequests:boolean = true
   noFriends:boolean = true
@@ -33,6 +34,7 @@ export class ChessRequestsComponent implements OnInit {
       })
     interval(5000).subscribe(
       x => {
+        this.friendObjects = []
         this.getFriends()
       }
     )
@@ -78,14 +80,13 @@ export class ChessRequestsComponent implements OnInit {
               if(response.length > 0) {
                 this.noFriends = false
                 for(var i = 0;i < response.length;i++) {
+                  this.friendObjects.push({'name': response[i], 'hasRequest': false})
                   for(var j = 0;j < this.requestObjects.length;j++) {
                     if(this.requestObjects[j].to == response[i] || this.requestObjects[j].from == response[i]) {
-                      //response[i].hasRequest = true
+                      this.friendObjects[i].hasRequest = true
                     }
                   }
-                  //response[i].hasRequest = false
                 }
-                this.friends = response
                 console.log(this)
               }  
           }
