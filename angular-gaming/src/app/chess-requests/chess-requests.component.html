@@ -17,11 +17,26 @@
         </div>
         <div class="popuptext" *ngIf="noRequests == false" id="requests">
             <div *ngFor="let request of requestObjects;let i = index">
-                <span>{{request.from}}</span><br>
-                <span>{{request.to}}</span><br>
-                <span>{{request.accepted}}</span><br>
-                <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=">Link to game</a>
-                <button (click)=acceptRequest(request.id)>Accept Request</button>
+                <div *ngIf="request.accepted">
+                    <div *ngIf="request.from == username">
+                        {{request.to}} has accepted your request!<br>
+                        <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=w">Play now!</a>
+                    </div>
+                    <div *ngIf="request.to == username">
+                        You have accepted {{request.from}}'s request!<br>
+                        <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=w">Play now!</a>
+                    </div>                
+                </div>
+                <div *ngIf="request.accepted==false">
+                    <span>This request is still pending</span>
+                    <div *ngIf="request.from == username">
+                        <span>{{request.to}} is yet to accept your request</span>
+                    </div>
+                    <div *ngIf="request.to == username">
+                        <span>{{request.from}} is inviting you to play!</span><br>
+                        <button (click)=acceptRequest(request.id)>Accept Request</button>
+                    </div>
+                </div>
             </div>
             <div>
 
