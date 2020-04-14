@@ -28,15 +28,15 @@ export class HomeComponent implements OnInit {
       src : '../../assets/Space-Shooter/space_shooter.html',
       inviteFriends: false
     },
-    {
-      id : 3 ,
-      name : 'Randomface',
-      imgUrl :  '../../assets/chessstock.jpg' ,
-      rating :  5 ,
-      desc : 'A random face game blah blah blah......',
-      src : '../../assets/Chess/chess.html',
-      inviteFriends: false
-    }
+    // {
+    //   id : 3 ,
+    //   name : 'Randomface',
+    //   imgUrl :  '../../assets/chessstock.jpg' ,
+    //   rating :  5 ,
+    //   desc : 'A random face game blah blah blah......',
+    //   src : '../../assets/Chess/chess.html',
+    //   inviteFriends: false
+    // }
 
 
 

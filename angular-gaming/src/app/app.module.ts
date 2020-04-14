@@ -32,6 +32,8 @@ import { FriendsComponent } from './friends/friends.component';
 import { SearchComponent } from './search/search.component';
 import { ChessRequestsComponent } from './chess-requests/chess-requests.component';
 
+import { NgxHmCarouselModule } from 'ngx-hm-carousel';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { ChessRequestsComponent } from './chess-requests/chess-requests.componen
     HttpClientModule,
     AppRoutingModule,
     MatCardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxHmCarouselModule
   ],
   providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS,
