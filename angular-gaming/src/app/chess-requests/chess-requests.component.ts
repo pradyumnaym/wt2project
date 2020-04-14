@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from '../services/profile.service'
 import {ChessService} from '../services/chess.service'
+import { interval } from 'rxjs';
 import { VirtualTimeScheduler, of } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
 
@@ -19,12 +20,22 @@ export class ChessRequestsComponent implements OnInit {
 
   constructor(
     private profileService:ProfileService,
-    private chessService:ChessService
+    private chessService:ChessService,
+    
   ) { }
 
   ngOnInit(): void {
-    this.getRequests()
-    this.getFriends()
+    interval(5000).subscribe(
+      x => {
+        this.requests = []
+        this.requestObjects = []
+        this.getRequests()
+      })
+    interval(5000).subscribe(
+      x => {
+        this.getFriends()
+      }
+    )
   }
 
   getRequests() {
@@ -66,6 +77,14 @@ export class ChessRequestsComponent implements OnInit {
               console.log(response)
               if(response.length > 0) {
                 this.noFriends = false
+                for(var i = 0;i < response.length;i++) {
+                  for(var j = 0;j < this.requestObjects.length;j++) {
+                    if(this.requestObjects[j].to == response[i] || this.requestObjects[j].from == response[i]) {
+                      //response[i].hasRequest = true
+                    }
+                  }
+                  //response[i].hasRequest = false
+                }
                 this.friends = response
                 console.log(this)
               }  
