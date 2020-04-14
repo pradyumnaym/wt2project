@@ -23,6 +23,7 @@ api.post("/setboard", (req, res) => {
     (err, game) => {
       if (err) throw err;
       res.send("Done adding new Data!");
+      console.log(game)
     }
   );
 });

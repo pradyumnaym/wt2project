@@ -24,7 +24,7 @@
                     </div>
                     <div *ngIf="request.to == username">
                         You have accepted {{request.from}}'s request!<br>
-                        <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=w">Play now!</a>
+                        <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=b">Play now!</a>
                     </div>                
                 </div>
                 <div *ngIf="request.accepted==false">
@@ -34,7 +34,7 @@
                     </div>
                     <div *ngIf="request.to == username">
                         <span>{{request.from}} is inviting you to play!</span><br>
-                        <button (click)=acceptRequest(request.id)>Accept Request</button>
+                        <button (click)=acceptRequest(request.reqid)>Accept Request</button>
                     </div>
                 </div>
             </div>
