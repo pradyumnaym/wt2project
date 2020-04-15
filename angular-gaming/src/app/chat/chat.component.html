@@ -1,6 +1,7 @@
-<body  >
 
-
-<app-chatcard></app-chatcard>
-
+<body >
+<span style="font-size: 0px;">Chat</span>
+<app-chatcard *ngFor="let chat of sortedchats"
+[chat]="chat" ></app-chatcard>
+<app-chatsend></app-chatsend>
 </body>
