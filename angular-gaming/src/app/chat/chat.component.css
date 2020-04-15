@@ -11,7 +11,7 @@ body {
 
 .scroll {
   width: 5000px;
-                height: 1100px;
+                height: 800px;
                 overflow-x: hidden;
                 overflow-x: auto;
 }
