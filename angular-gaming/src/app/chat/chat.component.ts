@@ -52,7 +52,8 @@ chats1: any;
     this.chatService.getChats().subscribe(chats => {
       this.chats1 = chats;
       this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
-      this.sortedchats1 = this.sortedchat1.slice(Math.max(this.sortedchat1.length - 4, 0));
+      this.sortedchats1 = this.sortedchat1;
+      //.slice(Math.max(this.sortedchat1.length - 4, 0))
 
     });
 
