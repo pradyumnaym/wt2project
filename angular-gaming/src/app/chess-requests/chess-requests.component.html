@@ -8,7 +8,7 @@
     <div class="left-div">
         <span class="div-header">Invite Friends</span>
         <div id="inviteFriends">
-            <div class="card" *ngFor="let friend of friendObjects;let i = index">
+            <div class="card" style="margin: 10px;padding:10px" *ngFor="let friend of friendObjects;let i = index">
                 <div style="font-weight:500" class="card-title" id="send_{{friend.name}}">{{friend.name}}</div>
                 <button class="button" *ngIf="friend.hasRequest == false" (click)="sendRequest(friend.name)">Send Request</button>
                 <p class="card-text" style="font-size:15px;" *ngIf="friend.hasRequest"> Request Pending</p>
@@ -21,7 +21,7 @@
             You have no requests
         </div>
         <div *ngIf="noRequests == false" id="requests">
-            <div class="card" *ngFor="let request of requestObjects;let i = index">
+            <div class="card" style="margin: 10px;padding:10px" *ngFor="let request of requestObjects;let i = index">
                 <div *ngIf="request.accepted">
                     <div style="font-weight:500" class="card-title" *ngIf="request.from == username">
                         {{request.to}} has accepted your request!<br>
