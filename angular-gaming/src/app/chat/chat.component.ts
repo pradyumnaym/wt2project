@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Chat} from '../models/chatcard';
+import {Chat , ChatSimilarity} from '../models/chatcard';
 import { ChatService } from '../chat.service';
+import { UsersimilarityService } from '../usersimilarity.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-
+  similarity:number;
   chats: Chat[] = [
 
     {
@@ -38,6 +39,9 @@ export class ChatComponent implements OnInit {
 
   ];
 
+  chatsimilar: ChatSimilarity[] = [] ;
+  chatobj: ChatSimilarity = {username:"1",timestamp:"1",msg:"hello",similarity:0};
+
   sortedchat1: any;
   sortedchats1: any;
 
@@ -45,18 +49,53 @@ sortedchat: any = this.chats.sort((a,b) => Number(a.timestamp) - Number(b.timest
 sortedchats = this.sortedchat.slice(Math.max(this.sortedchat.length - 4, 0));
 chats1: any;
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService,private usersimilarityService: UsersimilarityService) { }
 
   ngOnInit(): void {
 
     this.chatService.getChats().subscribe(chats => {
       this.chats1 = chats;
       this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
-      this.sortedchats1 = this.sortedchat1;
+      //this.sortedchats1 = this.sortedchat1;
       //.slice(Math.max(this.sortedchat1.length - 4, 0))
+      //index = 1;
+
+      for(let i = 0; i < this.sortedchat1.length; i++){
+
+
+         this.chatobj.username = this.sortedchat1[i].username;
+         this.chatobj.msg = this.sortedchat1[i].msg;
+         this.chatobj.timestamp = this.sortedchat1[i].timestamp;
+        this.chatobj.similarity = this.getUserSimilarity(this.sortedchat1[i].username);
+        console.log("see:-");
+        console.log(this.similarity);
+        this.chatsimilar.push(this.chatobj);
+
+        //this.chatsimilar.push({username:this.sortedchat1[i].username,msg:this.sortedchat1[i].msg,timestamp:this.sortedchat1[i].timestamp,similarity:this.getUserSimilarity(this.sortedchat1[i].username)});
+
+        console.log(this.chatsimilar[i]);
+
+      }
+
+
 
     });
 
+
+  }
+
+  getUserSimilarity(username) {
+    this.usersimilarityService.getUserSimilarity(username).subscribe(
+      response => {
+                    this.similarity = response;
+                    //console.log(response);
+                    this.chatobj.similarity = Number((response*100).toFixed(3));
+                  },
+      error => console.log(error)
+    )
+    //this.isset = true;
+    console.log('here'+this.chatobj.similarity);
+    return Number((this.similarity*100).toFixed(3));
 
   }
 

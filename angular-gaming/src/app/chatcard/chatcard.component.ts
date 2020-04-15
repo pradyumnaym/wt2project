@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {Chat} from '../models/chatcard';
+import {Chat, ChatSimilarity} from '../models/chatcard';
 import { UsersimilarityService } from '../usersimilarity.service';
 @Component({
   selector: 'app-chatcard',
@@ -8,9 +8,9 @@ import { UsersimilarityService } from '../usersimilarity.service';
 })
 export class ChatcardComponent implements OnInit {
 
-  @Input() chat: Chat;
-
-  similarity: any = 0.5;
+  @Input() chat: ChatSimilarity;
+  isset: boolean = false;
+  similarity: number = 0.5;
 
   //colourCode: number = Number(this.chat.timestamp);
 
@@ -33,8 +33,8 @@ constructor(private usersimilarityService: UsersimilarityService) { }
                   },
       error => console.log(error)
     )
-
-    return this.similarity;
+    this.isset = true;
+    return Number((this.similarity*100).toFixed(3));
 
   }
 

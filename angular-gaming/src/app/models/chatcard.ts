@@ -4,3 +4,10 @@ export class Chat {
   msg: string;
 
 }
+
+export class ChatSimilarity {
+  username: string;
+  timestamp: string;
+  msg: string;
+  similarity: number;
+}
