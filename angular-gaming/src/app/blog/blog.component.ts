@@ -531,7 +531,7 @@ export class BlogComponent implements OnInit {
  feedsOfAllItems: FeedItem[];
 
   constructor(private feedsService: FeedsService) {}
-
+z
   ngOnInit(): void {
     this.feedsService.getFeeds().subscribe(feeds => {
       this.feeds1 = feeds;

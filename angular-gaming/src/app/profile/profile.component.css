@@ -33,9 +33,9 @@
 }
 
 .center {
-    width: 55%;
+    width: 100%;
     background-color: rgba(0,0,0,0.7);
-    height: 70vh;
+    height: 100%;
     text-align:center;
     border-radius: 5px;
 }

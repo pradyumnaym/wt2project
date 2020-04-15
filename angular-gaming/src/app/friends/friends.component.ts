@@ -4,7 +4,7 @@ import {ProfileService} from '../services/profile.service';
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
-  styleUrls: ['./friends.component.css']
+  styleUrls: ['./friends.component.css','./friends.component.scss']
 })
 export class FriendsComponent implements OnInit {
   friends:any[];
@@ -24,7 +24,7 @@ export class FriendsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateUserName()  
+    this.updateUserName()
   }
 
   getUserFriends(username) {

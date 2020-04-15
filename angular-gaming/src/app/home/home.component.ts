@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Game } from '../models/gamecard';
 
 @Component({
@@ -8,6 +8,8 @@ import { Game } from '../models/gamecard';
 })
 export class HomeComponent implements OnInit {
 
+
+
   games: Game[] = [
 
     {
@@ -15,7 +17,7 @@ export class HomeComponent implements OnInit {
       name : 'Chess',
       imgUrl :  '../../assets/chessstock.jpg' ,
       rating :  4 ,
-      desc : 'A Game Of Chess lets see who has the best mindset blah blah blah......',
+      desc : 'Chess is one of the oldest strategy games in the world.Chess is an excellent board logic game that develops such skills as tactics, strategy and visual memory.',
       src : 'http://localhost:4200/chessRequests',
       inviteFriends: true
     },
@@ -24,19 +26,19 @@ export class HomeComponent implements OnInit {
       name : 'SpaceShooter',
       imgUrl :  '../../assets/spacestock.jpg' ,
       rating :  3 ,
-      desc : 'A battleship game blah blah blah......',
+      desc : 'Space Shooter game puts you at the forefront of a battle with space intruders. You will take control of the lone spaceship and protect galaxy from alien swarms. In this space game, you will be faced an increasingly large number of enemies and deal with many epic bosses in space war.',
       src : '../../assets/Space-Shooter/space_shooter.html',
       inviteFriends: false
     },
-    {
-      id : 3 ,
-      name : 'Randomface',
-      imgUrl :  '../../assets/chessstock.jpg' ,
-      rating :  5 ,
-      desc : 'A random face game blah blah blah......',
-      src : '../../assets/Chess/chess.html',
-      inviteFriends: false
-    }
+    // {
+    //   id : 3 ,
+    //   name : 'Randomface',
+    //   imgUrl :  '../../assets/chessstock.jpg' ,
+    //   rating :  5 ,
+    //   desc : 'A random face game blah blah blah......',
+    //   src : '../../assets/Chess/chess.html',
+    //   inviteFriends: false
+    // }
 
 
 
@@ -45,7 +47,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor() {  }
 
   ngOnInit(): void {
   }

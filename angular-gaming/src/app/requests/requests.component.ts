@@ -4,7 +4,7 @@ import {RequestsService} from '../services/requests.service';
 @Component({
   selector: 'app-requests',
   templateUrl: './requests.component.html',
-  styleUrls: ['./requests.component.css']
+  styleUrls: ['./requests.component.css','../profile/profile.component.scss']
 })
 export class RequestsComponent implements OnInit {
   hasRequests:boolean = false

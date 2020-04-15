@@ -7,7 +7,7 @@ import { Game } from '../models/gamecard';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css','./card.component.scss']
 })
 export class CardComponent implements OnInit {
 
