@@ -277,7 +277,7 @@ router.post('/usersimilarity', verifyToken, (req, res)=>{
 
 router.post('/inccount', verifyToken, (req, res)=>{
   if(!req.body.gameId) return res.sendStatus(400);
-  if(isNaN(req.body.gameId))  return res.sendStatus(400);
+  if(isNaN(req.body.gameId) || (gameId<0) || gameId>2)  return res.sendStatus(400);
   User.getUserByUserName(req.user.username, (err, user) =>{
     if(err) throw err;
     if(!user) return res.sendStatus(404);

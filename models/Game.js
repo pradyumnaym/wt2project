@@ -17,11 +17,17 @@ module.exports.getGameById = (searchid, callback) => {
 
 module.exports.setGameById = (setid, board, callback) => {
   board.id = setid;
-  var query = { id: setid };
-  Game.findOneAndUpdate(
-    query,
-    board,
-    { upsert: true },
-    callback
-  );
+  Game.findOne({id : setid}, (err, game)=>{
+    if(err) throw err;
+    if(game){
+      for(var key in board){
+        game[key] = board[key];
+        game.markModified(key);
+      }
+      game.save();
+    }else{
+      var g = Game(board);
+      g.save(callback);
+    }
+  });
 };
