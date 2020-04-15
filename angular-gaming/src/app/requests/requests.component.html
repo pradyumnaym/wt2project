@@ -1,6 +1,11 @@
 <div>
-    <div>
-        <h2 *ngIf="hasRequests == false">You currently have no friend requests</h2>
+    <div class="mini-header">
+        <div class="mini-div">
+            <span class="mini-text">Friend Requests</span>
+        </div>
+    </div>
+    <div class="container" style="text-align:center;">
+        <h2 *ngIf="hasRequests == false" >You currently have no friend requests</h2>
         <h2 *ngIf="hasRequests">Friend Requests</h2>
     </div>
     <div *ngIf="hasRequests">
