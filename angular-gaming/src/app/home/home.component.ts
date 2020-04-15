@@ -18,27 +18,24 @@ export class HomeComponent implements OnInit {
       imgUrl :  '../../assets/chessstock.jpg' ,
       rating :  4 ,
       desc : 'Chess is one of the oldest strategy games in the world.Chess is an excellent board logic game that develops such skills as tactics, strategy and visual memory.',
-      src : 'http://localhost:4200/chessRequests',
-      inviteFriends: true
+      src : 'http://localhost:4200/chessRequests'
     },
     {
       id : 2 ,
       name : 'SpaceShooter',
       imgUrl :  '../../assets/spacestock.jpg' ,
-      rating :  3 ,
+      rating :  4 ,
       desc : 'Space Shooter game puts you at the forefront of a battle with space intruders. You will take control of the lone spaceship and protect galaxy from alien swarms. In this space game, you will be faced an increasingly large number of enemies and deal with many epic bosses in space war.',
-      src : '../../assets/Space-Shooter/space_shooter.html',
-      inviteFriends: false
+      src : '../../assets/Space-Shooter/space_shooter.html'
     },
-    // {
-    //   id : 3 ,
-    //   name : 'Randomface',
-    //   imgUrl :  '../../assets/chessstock.jpg' ,
-    //   rating :  5 ,
-    //   desc : 'A random face game blah blah blah......',
-    //   src : '../../assets/Chess/chess.html',
-    //   inviteFriends: false
-    // }
+    {
+      id : 3 ,
+      name : 'Breakout',
+      imgUrl :  '../../assets/breakout_bg.png' ,
+      rating :  5 ,
+      desc : 'Step out and play the classic breakout game which blew up and has inspired countless clones since inception',
+      src : '../../assets/Breakout_game/index.html'
+    }
 
 
 

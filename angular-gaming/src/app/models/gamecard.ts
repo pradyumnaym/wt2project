@@ -5,5 +5,4 @@ export class Game {
   rating: number;
   desc: string;
   src : string;
-  inviteFriends: boolean
 }
