@@ -15,12 +15,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FeedsService {
-  FeedsUrl: string = 'http://localhost:8000/api/feeds';
+  FeedsUrl: string = 'http://localhost:4000/api/feeds';
   constructor(private http: HttpClient) { }
 
   // Get Todos
   getFeeds(): Observable<Feed> {
-    return this.http.get<Feed>('http://localhost:8000/api/feeds');
+    return this.http.get<Feed>('http://localhost:4000/api/feeds');
   }
 
 }
