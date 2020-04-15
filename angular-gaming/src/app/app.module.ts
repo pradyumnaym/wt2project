@@ -35,6 +35,7 @@ import { ChessRequestsComponent } from './chess-requests/chess-requests.componen
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import { ChatComponent } from './chat/chat.component';
 import { ChatcardComponent } from './chatcard/chatcard.component';
+import { ChatsendComponent } from './chatsend/chatsend.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ChatcardComponent } from './chatcard/chatcard.component';
     SearchComponent,
     ChessRequestsComponent,
     ChatComponent,
-    ChatcardComponent
+    ChatcardComponent,
+    ChatsendComponent
 
   ],
   imports: [

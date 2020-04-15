@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,Input } from '@angular/core';
+import {Chat} from '../models/chatcard';
 @Component({
   selector: 'app-chatcard',
   templateUrl: './chatcard.component.html',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatcardComponent implements OnInit {
 
-  constructor() { }
+  @Input() chat: Chat;
+
+  //colourCode: number = Number(this.chat.timestamp);
+
+constructor() { }
 
   ngOnInit(): void {
   }
+
+  colourcode(time: string): number
+  {
+      return Number(time) % 7;
+  }
+
 
 }

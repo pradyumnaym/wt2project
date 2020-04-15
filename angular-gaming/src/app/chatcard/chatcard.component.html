@@ -1,1 +1,33 @@
-<p>chatcard works!</p>
+
+
+    <div class="talk-bubble tri-right border round btm-left-in" style="margin-left:600px;padding-right: 500px;">
+      <div class="talktext">
+
+        <p ><b style="font-size: larger;">
+           <span *ngIf="colourcode(chat.timestamp)===0" style="color: red;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===1" style="color:blue;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===2" style="color:purple;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===3" style="color:green;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===4" style="color:magenta;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===5" style="color:gold;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===6" style="color:aqua;">{{chat.username}}</span>
+           <span *ngIf="colourcode(chat.timestamp)===7" style="color:brown;">{{chat.username}}</span>
+
+
+          </b>
+
+          <span>
+
+            <button class="button button5">50%</button>
+
+
+
+         </span>
+
+          <!-- {{chat.timestamp}}
+          <br> --><span style="font-size: large;font-weight: 500;">{{chat.msg}}</span>
+
+          <br></p>
+      </div>
+    </div>
+    <br>
