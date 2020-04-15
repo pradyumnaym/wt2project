@@ -1,45 +1,16 @@
 [
-      {
-            "username": "anush",
-            "img": "5e92c17d49b32d39af35ba8a",
-            "friends": []
-      },
-      {
-            "username": "abe123",
-            "img": "5e9356708e46d37ce55ab686",
-            "friends": [
-                  "testera"
-            ]
-      },
-      {
-            "username": "testera",
-            "img": "5e9354f68e46d37ce55ab680",
-            "friends": [
-                  "testerc",
-                  "abe123",
-                  "testerb",
-                  "testerd"
-            ]
-      },
-      {
-            "username": "testerb",
-            "img": "5e93555e8e46d37ce55ab682",
-            "friends": [
-                  "testera"
-            ]
-      },
-      {
-            "username": "testerc",
-            "img": "5e9354b08e46d37ce55ab67f",
-            "friends": [
-                  "testera"
-            ]
-      },
-      {
-            "username": "testerd",
-            "img": "5e9356558e46d37ce55ab685",
-            "friends": [
-                  "testera"
-            ]
-      }
+  {
+    "username": "anushkini1",
+    "img": "5e974fa352ef45410a4fbba2",
+    "friends": [
+      "anushkini2"
+    ]
+  },
+  {
+    "username": "anushkini2",
+    "img": "5e974fbc52ef45410a4fbba4",
+    "friends": [
+      "anushkini1"
+    ]
+  }
 ]

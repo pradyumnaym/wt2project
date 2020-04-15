@@ -268,7 +268,7 @@ router.post('/usersimilarity', verifyToken, (req, res)=>{
   if(!req.body.username) return res.sendStatus(400);
   User.getUserByUserName(req.user.username, (err, user)=>{
     if(err) throw err;
-    User.getUserByUserName(req.user.username, (err, user1)=>{
+    User.getUserByUserName(req.body.username, (err, user1)=>{
       if(err) throw err;
       return res.status(200).json([cosinesimilarity(user.gamesarray, user1.gamesarray)]);
     });
@@ -276,8 +276,8 @@ router.post('/usersimilarity', verifyToken, (req, res)=>{
 });
 
 router.post('/inccount', verifyToken, (req, res)=>{
-  if(!req.body.gameId) return res.sendStatus(400);
-  if(isNaN(req.body.gameId) || (gameId<0) || gameId>2)  return res.sendStatus(400);
+  if(!req.body.gameId && req.body.gameId !== 0) return res.sendStatus(400);
+  if(isNaN(req.body.gameId) || (req.body.gameId<0) || req.body.gameId>2) return res.sendStatus(400);
   User.getUserByUserName(req.user.username, (err, user) =>{
     if(err) throw err;
     if(!user) return res.sendStatus(404);

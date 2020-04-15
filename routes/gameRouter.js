@@ -7,6 +7,11 @@ const Game = require(path.join("..", "models", "Game.js"));
 const User = require(path.join("..", "models", "User.js"));
 const Request = require(path.join("..", "models", "Request.js"));
 
+var Feed = require('rss-to-json');
+var feeds;
+Feed.load('https://www.gamespot.com/feeds/game-news/', function(err, rss){
+   feeds = rss;
+});
 
 api.post("/getboard", (req, res) => {
   Game.getGameById(req.body.code, (err, board) => {
@@ -66,5 +71,11 @@ api.post('/acceptrequest', (req, res) =>{
     return res.status(200).json({});
   });
 });
+
+
+api.get('/feeds',(req, res) => {
+  res.send(feeds)
+})
+
 
 module.exports = api;

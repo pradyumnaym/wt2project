@@ -26,13 +26,15 @@ export class ChessRequestsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getRequests()
+    this.getFriends()
     interval(5000).subscribe(
       x => {
         this.requests = []
         this.requestObjects = []
         this.getRequests()
       })
-    interval(5000).subscribe(
+    interval(10000).subscribe(
       x => {
         this.friendObjects = []
         this.getFriends()
@@ -87,7 +89,6 @@ export class ChessRequestsComponent implements OnInit {
                     }
                   }
                 }
-                console.log(this)
               }  
           }
         )
