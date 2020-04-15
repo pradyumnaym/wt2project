@@ -10,6 +10,7 @@ import {BlogComponent} from './blog/blog.component';
 import {FriendsComponent} from './friends/friends.component';
 import {SearchComponent} from './search/search.component';
 import {ChessRequestsComponent} from './chess-requests/chess-requests.component'
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'blog', component: BlogComponent},
   {path: 'friends', component: FriendsComponent,canActivate: [AuthGuard]},
   {path: 'search/:username', component: SearchComponent,canActivate: [AuthGuard]},
+  {path: 'chat', component: ChatComponent,canActivate: [AuthGuard]},
   {path: 'chessRequests', component: ChessRequestsComponent, canActivate: [AuthGuard]}
 ];
 
