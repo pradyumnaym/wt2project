@@ -12,7 +12,6 @@ api.post('/addmsg', (req, res)=>{
     });
 });
 
-
 api.get('/msg', (req, res)=>{
     Message.getAllMessages((err, messages)=>{
         if(err) throw err;
@@ -25,8 +24,5 @@ api.get('/msg', (req, res)=>{
     });
 
 });
-
-
-
 
 module.exports = api;
