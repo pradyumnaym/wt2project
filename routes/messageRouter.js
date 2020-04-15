@@ -16,7 +16,11 @@ api.post('/addmsg', (req, res)=>{
 api.get('/msg', (req, res)=>{
     Message.getAllMessages((err, messages)=>{
         if(err) throw err;
-        return res.status(200).json(messages);
+        newlist = []
+        messages.forEach(doc =>{
+            var {username, timestamp, msg} = doc;
+            newlist.push({username, timestamp, msg});
+        });
     });
 });
 
