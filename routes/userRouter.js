@@ -268,7 +268,7 @@ router.post('/usersimilarity', verifyToken, (req, res)=>{
   if(!req.body.username) return res.sendStatus(400);
   User.getUserByUserName(req.user.username, (err, user)=>{
     if(err) throw err;
-    User.getUserByUserName(req.user.username, (err, user1)=>{
+    User.getUserByUserName(req.body.username, (err, user1)=>{
       if(err) throw err;
       return res.status(200).json([cosinesimilarity(user.gamesarray, user1.gamesarray)]);
     });

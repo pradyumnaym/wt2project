@@ -7,7 +7,7 @@ function cosinesimilarity(a, b){
     modb = Math.sqrt(modb);
     dotprod = 0
     for(var i=0;i<a.length;i++){
-        dotprod = a[i]*b[i];
+        dotprod += a[i]*b[i];
     }
     return dotprod / (moda * modb);
 }
