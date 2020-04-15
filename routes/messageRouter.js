@@ -21,7 +21,9 @@ api.get('/msg', (req, res)=>{
             var {username, timestamp, msg} = doc;
             newlist.push({username, timestamp, msg});
         });
+        return res.status(200).json(newlist);
     });
+
 });
 
 
