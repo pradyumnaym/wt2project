@@ -33,6 +33,8 @@ import { SearchComponent } from './search/search.component';
 import { ChessRequestsComponent } from './chess-requests/chess-requests.component';
 
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
+import { ChatComponent } from './chat/chat.component';
+import { ChatcardComponent } from './chatcard/chatcard.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { NgxHmCarouselModule } from 'ngx-hm-carousel';
     FeedComponent,
     FriendsComponent,
     SearchComponent,
-    ChessRequestsComponent
+    ChessRequestsComponent,
+    ChatComponent,
+    ChatcardComponent
 
   ],
   imports: [

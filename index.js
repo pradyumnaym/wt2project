@@ -8,6 +8,7 @@ const game = require(path.join(__dirname, "routes", "gameRouter.js"));
 const images = require(path.join(__dirname, "routes", "imageRouter.js"))
 const verifyToken = require(path.join(__dirname, "jwt", "verifyToken.js"));
 const Request = require(path.join(__dirname, "models", "Request.js"))
+const msg = require(path.join(__dirname, "routes", "messageRouter.js"))
 
 mongoose.connect(
   "mongodb+srv://pradyumnaym:password@123@cluster0-rmlwr.mongodb.net/test?retryWrites=true&w=majority",
@@ -44,5 +45,6 @@ app.use(function (req, res, next) {
 app.use("/user", user);
 app.use("/api", verifyToken, game);
 app.use("/images", images);
+app.use("/chat", verifyToken, msg);
 
 app.listen(4000);

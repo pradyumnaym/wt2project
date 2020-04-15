@@ -9,7 +9,6 @@ const Request = require(path.join("..", "models", "Request.js"));
 
 
 api.post("/getboard", (req, res) => {
-  console.log(req.query);
   Game.getGameById(req.body.code, (err, board) => {
     if (err) throw err;
     res.status(200).json(board);
@@ -18,7 +17,7 @@ api.post("/getboard", (req, res) => {
 
 api.post("/setboard", (req, res) => {
   Game.setGameById(
-    Number(req.body.code),
+    req.body.code,
     JSON.parse(req.body.pieces),
     (err, game) => {
       if (err) throw err;

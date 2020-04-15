@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 const verifyToken = require(path.join("..", "jwt", "verifyToken.js"));
 const User = require(path.join("..", "models", "User.js"))
 const ProfilePic = require(path.join("..", "models", "ProfilePic.js"))
+const cosinesimilarity = require(path.join("..", "util", "cosine.js"));
 
 var router = express.Router();
 
@@ -46,7 +47,8 @@ router.post("/register", (req, res)=>{
       newuser["friendrequests"] = []
       newuser["gamerequests"] = []
       newuser["password"] = bcrypt.hashSync(newuser["password"], 10)
-
+      newuser["gamesarray"] = [0, 0, 0]
+    
       if(files && files['file']){
         img = fs.readFileSync(files['file'].path) 
         type = files['file'].type;
@@ -261,4 +263,29 @@ router.delete('/gamerequests', verifyToken, (req, res) =>{
     return res.status(200).json([]);
   });
 });
+
+router.post('/usersimilarity', verifyToken, (req, res)=>{
+  if(!req.body.username) return res.sendStatus(400);
+  User.getUserByUserName(req.user.username, (err, user)=>{
+    if(err) throw err;
+    User.getUserByUserName(req.user.username, (err, user1)=>{
+      if(err) throw err;
+      return res.status(200).json([cosinesimilarity(user.gamesarray, user1.gamesarray)]);
+    });
+  });
+});
+
+router.post('/inccount', verifyToken, (req, res)=>{
+  if(!req.body.gameId) return res.sendStatus(400);
+  if(isNaN(req.body.gameId))  return res.sendStatus(400);
+  User.getUserByUserName(req.user.username, (err, user) =>{
+    if(err) throw err;
+    if(!user) return res.sendStatus(404);
+    user.gamesarray[Number(req.body.gameId)] += 1;
+    user.markModified("gamesarray");
+    user.save();
+    return res.sendStatus(200);
+  });
+});
+
 module.exports = router;
