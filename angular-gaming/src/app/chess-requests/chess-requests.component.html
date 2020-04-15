@@ -3,45 +3,43 @@
         <span class="mini-text">Chess Requests</span>
     </div>
 </div>
-<div style="text-align:center;">
+<div>
+    <div class="wrapper">
     <div class="left-div">
-    <div>
-        <span>Invite Friends</span>
-        <div class="popuptext" id="inviteFriends">
-            <div *ngFor="let friend of friendObjects;let i = index">
-                <span id="send_{{friend.name}}">{{friend.name}}</span>
-                <button *ngIf="friend.hasRequest == false" (click)="sendRequest(friend.name)">Send Request</button>
-                <span *ngIf="friend.hasRequest"> Request Pending</span>
+        <span class="div-header">Invite Friends</span>
+        <div id="inviteFriends">
+            <div class="card" *ngFor="let friend of friendObjects;let i = index">
+                <div style="font-weight:500" class="card-title" id="send_{{friend.name}}">{{friend.name}}</div>
+                <button class="button" *ngIf="friend.hasRequest == false" (click)="sendRequest(friend.name)">Send Request</button>
+                <p class="card-text" style="font-size:15px;" *ngIf="friend.hasRequest"> Request Pending</p>
             </div>
         </div>
     </div>
-    </div>
     <div class="right-div">
-    <div>
-        <span>Requests</span>
-        <div class="popuptext" *ngIf="noRequests" id="requests">
+        <span class="div-header">Requests</span>
+        <div *ngIf="noRequests" id="requests">
             You have no requests
         </div>
-        <div class="popuptext" *ngIf="noRequests == false" id="requests">
-            <div *ngFor="let request of requestObjects;let i = index">
+        <div *ngIf="noRequests == false" id="requests">
+            <div class="card" *ngFor="let request of requestObjects;let i = index">
                 <div *ngIf="request.accepted">
-                    <div *ngIf="request.from == username">
+                    <div style="font-weight:500" class="card-title" *ngIf="request.from == username">
                         {{request.to}} has accepted your request!<br>
-                        <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=w">Play now!</a>
+                        <a class="card-link" href="../../assets/Chess/chess.html?code={{request.reqid}}&color=w">Play now!</a>
                     </div>
-                    <div *ngIf="request.to == username">
+                    <div style="font-weight:500" class="card-title" *ngIf="request.to == username">
                         You have accepted {{request.from}}'s request!<br>
-                        <a href="../../assets/Chess/chess.html?code={{request.reqid}}&color=b">Play now!</a>
+                        <a class="card-link" href="../../assets/Chess/chess.html?code={{request.reqid}}&color=b">Play now!</a>
                     </div>                
                 </div>
                 <div *ngIf="request.accepted==false">
-                    <span>This request is still pending</span>
-                    <div *ngIf="request.from == username">
-                        <span>{{request.to}} is yet to accept your request</span>
+                    <div style="font-weight:500" class="card-title">This request is still pending</div>
+                    <div class="card-text" *ngIf="request.from == username">
+                       {{request.to}} is yet to accept your request
                     </div>
-                    <div *ngIf="request.to == username">
-                        <span>{{request.from}} is inviting you to play!</span><br>
-                        <button (click)=acceptRequest(request.reqid)>Accept Request</button>
+                    <div class="card-text" *ngIf="request.to == username">
+                        {{request.from}} is inviting you to play!
+                        <button class="button" (click)=acceptRequest(request.reqid)>Accept Request</button>
                     </div>
                 </div>
             </div>
@@ -49,4 +47,3 @@
     </div>
     </div>
 </div>
-
