@@ -38,6 +38,9 @@ export class ChatComponent implements OnInit {
 
   ];
 
+  sortedchat1: any;
+  sortedchats1: any;
+
 sortedchat: any = this.chats.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
 sortedchats = this.sortedchat.slice(Math.max(this.sortedchat.length - 4, 0));
 chats1: any;
@@ -48,10 +51,16 @@ chats1: any;
 
     this.chatService.getChats().subscribe(chats => {
       this.chats1 = chats;
-      console.log(this.chats1);
+      this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
+      this.sortedchats1 = this.sortedchat1.slice(Math.max(this.sortedchat1.length - 4, 0));
+
     });
 
 
   }
+
+
+
+
 
 }

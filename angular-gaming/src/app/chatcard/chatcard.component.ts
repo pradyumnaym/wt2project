@@ -16,9 +16,9 @@ constructor() { }
   ngOnInit(): void {
   }
 
-  colourcode(time: string): number
+  colourcode(username: string): number
   {
-      return Number(time) % 7;
+    return username.length % 10 + 1;
   }
 
 
