@@ -1,8 +1,12 @@
 
 <div class="mini-header">
     <div class="mini-div">
-        <span class="mini-text">Chess Requests</span>
+        <span class="mini-text">Blog Spot</span>
     </div>
 </div>
-<app-feed  *ngFor="let feed of feedsOfAllItems"
-[feed]="feed"></app-feed>
+<div class="bg-div">
+<div class="container">
+    <app-feed  *ngFor="let feed of feedsOfAllItems"
+    [feed]="feed"></app-feed>
+</div>
+</div>

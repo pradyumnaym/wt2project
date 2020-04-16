@@ -40,10 +40,12 @@ export class CarouselComponent {
   constructor() { }
 
   click(i) {
-    if(i%2==1)
+    if(i%3==1)
     window.open('http://localhost:4200/chessRequests');
-    else
+    else if(i%3 == 0)
     window.open('http://localhost:4200/../assets/Space-Shooter/space_shooter.html');
+    else
+    window.open('http://localhost:4200/../assets/Breakout_game/index.html');
   }
 
 }

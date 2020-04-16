@@ -2,11 +2,14 @@
 <!-- <iframe height = 1000 width = 1000 src="../../assets/Chess/chess.html"></iframe> -->
 
 
-
 <app-carousel></app-carousel>
-<app-card
-  *ngFor="let game of games"
-  [games]="game"
-  >
-</app-card>
+<div class="bg-div">
+<div class="container">
+  <app-card
+    *ngFor="let game of games"
+    [games]="game"
+    >
+  </app-card>
+</div>
+</div>
 <app-carousel></app-carousel>

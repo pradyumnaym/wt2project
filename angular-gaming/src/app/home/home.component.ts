@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
     {
       id : 2 ,
       name : 'SpaceShooter',
-      imgUrl :  '../../assets/spacestock.jpg' ,
+      imgUrl :  '../../assets/space_bg.jpg' ,
       rating :  4 ,
-      desc : 'Space Shooter game puts you at the forefront of a battle with space intruders. You will take control of the lone spaceship and protect galaxy from alien swarms. In this space game, you will be faced an increasingly large number of enemies and deal with many epic bosses in space war.',
+      desc : 'Space Shooter game puts you at the forefront of a battle with space intruders. You will take control of the lone spaceship and protect galaxy from alien swarms.',
       src : '../../assets/Space-Shooter/space_shooter.html'
     },
     {
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       name : 'Breakout',
       imgUrl :  '../../assets/breakout_bg.png' ,
       rating :  5 ,
-      desc : 'Step out and play the classic breakout game which blew up and has inspired countless clones since inception',
+      desc : 'Step out and play the classic breakout game which blew up and has inspired countless clones since inception.',
       src : '../../assets/Breakout_game/index.html'
     }
 
