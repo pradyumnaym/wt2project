@@ -56,51 +56,31 @@ chats1: any;
     this.chatService.getChats().subscribe(chats => {
       this.chats1 = chats;
       this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
+      console.log(this.sortedchat1)
       //this.sortedchats1 = this.sortedchat1;
       //.slice(Math.max(this.sortedchat1.length - 4, 0))
       //index = 1;
 
       for(let i = 0; i < this.sortedchat1.length; i++){
-
-
-         this.chatobj.username = this.sortedchat1[i].username;
-         this.chatobj.msg = this.sortedchat1[i].msg;
-         this.chatobj.timestamp = this.sortedchat1[i].timestamp;
-        this.chatobj.similarity = this.getUserSimilarity(this.sortedchat1[i].username);
-        console.log("see:-");
-        console.log(this.similarity);
-        this.chatsimilar.push(this.chatobj);
-
+        var chatO = {username:"1",timestamp:"1",msg:"hello",similarity:0}
+        chatO.username = this.sortedchat1[i].username;
+        chatO.msg = this.sortedchat1[i].msg;
+        chatO.timestamp = this.sortedchat1[i].timestamp;
+        this.getUserSimilarity(this.sortedchat1[i].username, chatO);
+        this.chatsimilar.push(chatO);
         //this.chatsimilar.push({username:this.sortedchat1[i].username,msg:this.sortedchat1[i].msg,timestamp:this.sortedchat1[i].timestamp,similarity:this.getUserSimilarity(this.sortedchat1[i].username)});
-
-        console.log(this.chatsimilar[i]);
-
       }
-
-
-
     });
 
 
   }
 
-  getUserSimilarity(username) {
+  getUserSimilarity(username,chatO) {
     this.usersimilarityService.getUserSimilarity(username).subscribe(
       response => {
-                    this.similarity = response;
-                    //console.log(response);
-                    this.chatobj.similarity = Number((response*100).toFixed(3));
+                    chatO.similarity = (response*100).toFixed(2)
                   },
       error => console.log(error)
     )
-    //this.isset = true;
-    console.log('here'+this.chatobj.similarity);
-    return Number((this.similarity*100).toFixed(3));
-
   }
-
-
-
-
-
 }

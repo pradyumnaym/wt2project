@@ -28,7 +28,7 @@ export class CarouselComponent {
   direction = 'right';
   directionToggle = true;
   autoplay = true;
-  avatars = '1234567812345678'.split('').map((x, i) => {
+  avatars = '123456781234567'.split('').map((x, i) => {
     const num = i;
     // const num = Math.floor(Math.random() * 1000);
     return {

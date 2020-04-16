@@ -30,8 +30,4 @@ export class ChatService {
   PutChat(timestamp , msg) {
     return this.http.post<any>(this.postChatUrl,{ 'timestamp' : timestamp , 'msg': msg })
   }
-
-
-
-
 }

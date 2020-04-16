@@ -26,7 +26,7 @@
        </div>
         <br>
         <div *ngIf="hasFriends">
-         <span style="font-size: 20px;">   {{profile.firstname}}'s Friends</span>
+         <span style="font-size: 20px;"> {{profile.firstname}}'s Friends</span>
             <div id="friends">
                 <div class="row row-list">
                     <div class="col-sm" *ngFor="let friend of friends | slice:0:3;">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div style="font-size: 25px;">
+            <div style="font-size: 20px;">
                 <a routerLink="/friends">See all friends</a>
             </div>
         </div>
