@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../services/search.service'
+import {ProfileService} from '../services/profile.service'
 import {Router,ActivatedRoute} from '@angular/router'
 @Component({
   selector: 'app-search',
@@ -7,7 +8,7 @@ import {Router,ActivatedRoute} from '@angular/router'
   styleUrls: ['./search.component.css','./search.component.scss','../profile/profile.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  actualUser:string
   username:string;
   profile:any = {}
   hasFriends:boolean = false
@@ -20,10 +21,12 @@ export class SearchComponent implements OnInit {
   constructor(
     private searchService:SearchService,
     private activatedRoute:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit(): void {
+    this.getUserProfilePage()
     this.activatedRoute.params.subscribe(
       routeParams => {
         let name = routeParams.username
@@ -31,10 +34,17 @@ export class SearchComponent implements OnInit {
       })
   }
 
+  getUserProfilePage() {
+    this.profileService.getUserDetails().subscribe(
+      user => {
+        this.actualUser = user.username
+      }
+    )
+  }
   getUsername() {
     document.getElementById('profile_body').style.visibility = 'hidden';
     this.username = (<HTMLInputElement>document.getElementById('username')).value
-    this.searchUser(this.username)
+    this.router.navigate(['search',this.username])
   }
 
   searchUser(name) {
@@ -75,9 +85,13 @@ export class SearchComponent implements OnInit {
     this.searchService.getFriends(username).subscribe(
       response => {
                     this.friends = response
-                    console.log(response)
+                    this.hasFriends = true
                     for(var i =0;i<3 && i<this.friends.length;i++) {
-                      this.hasFriends = true
+                      console.log(this.actualUser)
+                      console.log(this.friends)
+                      if(this.friends[i] == this.actualUser) {
+                        this.notFriend = false
+                      }
                       this.getProfileDetails(this.friends[i])
                     }
                   },
