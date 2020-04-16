@@ -2,8 +2,9 @@
 
     <div class="talk-bubble tri-right border round btm-left-in" style="margin-left:600px;padding-right: 500px;">
       <div class="talktext">
-
-        <p ><b style="font-size: larger;">
+        
+        <p>
+          <a [routerLink]="['/search',chat.username]"><b style="font-size: larger;">
            <span *ngIf="colourcode(chat.username)===9" style="color: red;">{{chat.username}}</span>
            <span *ngIf="colourcode(chat.username)===1" style="color:blue;">{{chat.username}}</span>
            <span *ngIf="colourcode(chat.username)===2" style="color:purple;">{{chat.username}}</span>
@@ -14,10 +15,8 @@
            <span *ngIf="colourcode(chat.username)===7" style="color:brown;">{{chat.username}}</span>
            <span *ngIf="colourcode(chat.username)===8" style="color:orange;">{{chat.username}}</span>
            <span *ngIf="colourcode(chat.username)===10" style="color:crimson;">{{chat.username}}</span>
-
-
-
           </b>
+          </a>
 
           <span>
             <button class="button button5">{{chat.similarity}}%</button>
