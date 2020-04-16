@@ -31,7 +31,7 @@ export class FriendsComponent implements OnInit {
     this.profileService.getFriends(username).subscribe(
       response => {
                     this.friends = response
-                    for(var i=0;i<3 && i<this.friends.length;i++) {
+                    for(var i=0;i<this.friends.length;i++) {
                       this.hasFriends = true
                       this.getProfileDetails(this.friends[i])
                     }
