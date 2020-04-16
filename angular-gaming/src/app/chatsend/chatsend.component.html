@@ -2,7 +2,7 @@
   <form>
 
   <input type="text" class="form__field" placeholder="Enter your message" name="name" id='name' required  [(ngModel)]="msg"/>
-  <label for="name" class="form__label">Enter your message</label>
+  <label id="msg_label" for="name" class="form__label">Enter your message</label>
 
   <div class="button-circle" style="margin-left: 500px;" (click)="postmsg()">
     <div class="gradient"></div>

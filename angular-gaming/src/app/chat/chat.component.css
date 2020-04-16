@@ -14,6 +14,4 @@ body {
                 height: 700px;
                 overflow-x: hidden;
                 overflow-x: auto;
-                display: flex;
-  flex-direction: column-reverse;
 }
