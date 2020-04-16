@@ -1,16 +1,21 @@
 [
-  {
-    "username": "anushkini1",
-    "img": "5e974fa352ef45410a4fbba2",
-    "friends": [
-      "anushkini2"
-    ]
-  },
-  {
-    "username": "anushkini2",
-    "img": "5e974fbc52ef45410a4fbba4",
-    "friends": [
-      "anushkini1"
-    ]
-  }
+      {
+            "username": "anushkini1",
+            "img": "5e974fa352ef45410a4fbba2",
+            "friends": [
+                  "anushkini2"
+            ]
+      },
+      {
+            "username": "anushkini2",
+            "img": "5e974fbc52ef45410a4fbba4",
+            "friends": [
+                  "anushkini1"
+            ]
+      },
+      {
+            "username": "tester1",
+            "img": "5e9782d020259700ecd8966a",
+            "friends": []
+      }
 ]

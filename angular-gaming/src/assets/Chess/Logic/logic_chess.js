@@ -33,7 +33,7 @@ var thisPlayer = getUrlVars()["color"]
 
 var isThisPlayersTurn = thisPlayer == "w" ? 1 : 0;
 if (thisPlayer == "b") {
-  getinterval = setInterval(getPositions, 500);
+  getinterval = setInterval(getPositions, 1000);
 }
 function allow(ev) {
   ev.preventDefault();
@@ -282,7 +282,7 @@ function drop(ev) {
     changeTurn();
   }
   sendRequest();
-  getinterval = setInterval(getPositions, 500);
+  getinterval = setInterval(getPositions, 1000);
 }
 
 function disableDrop() {
