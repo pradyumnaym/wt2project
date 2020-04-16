@@ -55,7 +55,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.chatService.getChats().subscribe(chats => {
       this.chats1 = chats;
-      this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
+      this.sortedchat1 = this.chats1.sort((a,b) => Number(b.timestamp.replace(",","")) - Number(a.timestamp.replace(",","")));
 
       for(let i = 0; i < this.sortedchat1.length; i++){
         var chatO = {username:"1",timestamp:"1",msg:"hello",similarity:0}
@@ -71,7 +71,7 @@ export class ChatComponent implements OnInit {
       this.chatsimilar = []
       this.chatService.getChats().subscribe(chats => {
         this.chats1 = chats;
-        this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
+        this.sortedchat1 = this.chats1.sort((a,b) =>  Number(b.timestamp.replace(",","")) - Number(a.timestamp.replace(",","")));
         console.log("got messages")
 
         for(let i = 0; i < this.sortedchat1.length; i++){
@@ -81,7 +81,7 @@ export class ChatComponent implements OnInit {
           chatO.timestamp = this.sortedchat1[i].timestamp;
           this.getUserSimilarity(this.sortedchat1[i].username, chatO);
           this.chatsimilar.push(chatO);
-          //this.chatsimilar.push({username:this.sortedchat1[i].username,msg:this.sortedchat1[i].msg,timestamp:this.sortedchat1[i].timestamp,similarity:this.getUserSimilarity(this.sortedchat1[i].username)});
+
         }
       })
     });
