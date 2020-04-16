@@ -46,9 +46,9 @@ export class ChatComponent implements OnInit {
   sortedchat1: any;
   sortedchats1: any;
 
-sortedchat: any = this.chats.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
-sortedchats = this.sortedchat.slice(Math.max(this.sortedchat.length - 4, 0));
-chats1: any;
+  sortedchat: any = this.chats.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
+  sortedchats = this.sortedchat.slice(Math.max(this.sortedchat.length - 4, 0));
+  chats1: any;
 
   constructor(private chatService: ChatService,private usersimilarityService: UsersimilarityService) { }
 
@@ -56,10 +56,6 @@ chats1: any;
     this.chatService.getChats().subscribe(chats => {
       this.chats1 = chats;
       this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
-      console.log("got messages")
-      //this.sortedchats1 = this.sortedchat1;
-      //.slice(Math.max(this.sortedchat1.length - 4, 0))
-      //index = 1;
 
       for(let i = 0; i < this.sortedchat1.length; i++){
         var chatO = {username:"1",timestamp:"1",msg:"hello",similarity:0}
@@ -68,18 +64,15 @@ chats1: any;
         chatO.timestamp = this.sortedchat1[i].timestamp;
         this.getUserSimilarity(this.sortedchat1[i].username, chatO);
         this.chatsimilar.push(chatO);
-        //this.chatsimilar.push({username:this.sortedchat1[i].username,msg:this.sortedchat1[i].msg,timestamp:this.sortedchat1[i].timestamp,similarity:this.getUserSimilarity(this.sortedchat1[i].username)});
       }
     })
     interval(5000).subscribe(
-    x => {  
+    x => { 
+      this.chatsimilar = []
       this.chatService.getChats().subscribe(chats => {
         this.chats1 = chats;
         this.sortedchat1 = this.chats1.sort((a,b) => Number(a.timestamp) - Number(b.timestamp));
         console.log("got messages")
-        //this.sortedchats1 = this.sortedchat1;
-        //.slice(Math.max(this.sortedchat1.length - 4, 0))
-        //index = 1;
 
         for(let i = 0; i < this.sortedchat1.length; i++){
           var chatO = {username:"1",timestamp:"1",msg:"hello",similarity:0}
