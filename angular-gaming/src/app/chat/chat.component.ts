@@ -62,18 +62,20 @@ chats1: any;
 
       for(let i = 0; i < this.sortedchat1.length; i++){
 
-
+         this.getUserSimilarity(this.sortedchat1[i].username);
          this.chatobj.username = this.sortedchat1[i].username;
          this.chatobj.msg = this.sortedchat1[i].msg;
          this.chatobj.timestamp = this.sortedchat1[i].timestamp;
-        this.chatobj.similarity = this.getUserSimilarity(this.sortedchat1[i].username);
-        console.log("see:-");
-        console.log(this.similarity);
-        this.chatsimilar.push(this.chatobj);
 
-        //this.chatsimilar.push({username:this.sortedchat1[i].username,msg:this.sortedchat1[i].msg,timestamp:this.sortedchat1[i].timestamp,similarity:this.getUserSimilarity(this.sortedchat1[i].username)});
+         let obj = Number(document.getElementById("dup").innerHTML);
+        // console.log(obj);
+        //console.log("see:-");
+        //console.log(this.similarity);
+        //this.chatsimilar.push(this.chatobj);
+        console.log(2);
+        this.chatsimilar.push({username:this.sortedchat1[i].username,msg:this.sortedchat1[i].msg,timestamp:this.sortedchat1[i].timestamp,similarity:obj});
 
-        console.log(this.chatsimilar[i]);
+        //console.log(this.chatsimilar[i]);
 
       }
 
@@ -85,18 +87,30 @@ chats1: any;
   }
 
   getUserSimilarity(username) {
+    let obj: number;
     this.usersimilarityService.getUserSimilarity(username).subscribe(
       response => {
-                    this.similarity = response;
-                    //console.log(response);
+                    obj = response;
+                    document.getElementById("dup").innerHTML = obj.toLocaleString();
+                    this.update();
+                    //console.log(document.getElementById("dup").innerHTML);
+                   //console.log(1);
                     this.chatobj.similarity = Number((response*100).toFixed(3));
                   },
       error => console.log(error)
-    )
-    //this.isset = true;
-    console.log('here'+this.chatobj.similarity);
-    return Number((this.similarity*100).toFixed(3));
 
+    );
+    //this.isset = true;
+    //console.log('here'+this.chatobj.similarity);
+    //console.log(temp);
+    //return obj;
+    this.update();
+    //console.log(Response.toString());
+    //console.log(obj);
+  }
+
+  update(){
+    console.log(1);
   }
 
 

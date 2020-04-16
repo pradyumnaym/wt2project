@@ -21,7 +21,8 @@
 
           <span>
 
-            <button class="button button5">{{chat.similarity}}%</button>
+            <!-- <button class="button button5">{{chat.similarity}}%</button> -->
+            <button class="button button5" (click)="getUserSimilarity(chat.username)">{{similarity}}%</button>
 
 
 
