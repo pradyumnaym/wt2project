@@ -1,0 +1,40 @@
+Web Technologies I Assignment Report 
+UE17CS204 Teammates: Anush V Kini, Pradyumna Y M, Harish P B Prof. Oshin Sharma Submission Date: 07/10/2018
+Gaming website using web languages
+
+Online Chess Game Using AJAX and PHP
+    It is a 2-player online chess game made using JavaScript,AJAX and PHP. 
+    The game uses table layout for the board and images for pieces.
+    Drag and Drop API has been used to allow the users to move the pieces on the board. 
+    On drag, the drag handler, with the help of several functions that deﬁne the logic,enables all the allowed boxes (<td>elements) .
+    Once the piece is dropped, all the movements are disabled and and AJAX POST request is sent to the server, with all the details of the last move and the current state of the game.
+    This data is stored on the Server using PHP and ﬁles. 
+    Each game can have a unique code using which the two players can access the same session.
+    Once all the data is sent, the client listens for any change on the server (until the other player makes a move).
+    Once the changes on the server are done, the client refreshes the board with the new locations of the pieces based on the new information.
+
+Space Shooter Game using Javascript and CSS
+
+    The game is a one player game which involves the player controlling a spaceship and shooting enemies to gain the highest score possible.
+    This game has been made purely using JavaScript and CSS. 
+    The player controls the spaceship using the arrow keys.
+    The player can use the spacebar key to shoot. 
+    These controls have been implemented using event listeners in JavaScript.
+    The spaceship and enemies are drawn on a canvas and the canvas is redrawn at 30 frames per second to animate the movements of all characters.
+    Enemies will spawn on the canvas and the player can shoot them for points which will be added to the score. 
+    The player dies on making contact with an enemy.
+    The player is given three lives to achieve the highest score possible.
+
+Flappy Bird Game using Javascript
+
+    The game is a side-scroller where the player controls a bird, attempting to ﬂy between columns of green pipes without hitting them.
+    If the player touches the pipes, theylose.
+    Bird brieﬂy ﬂaps upward each time that the player taps the screen, if the screen is not tapped, bird falls because ofgravity, each pair of pipes that he navigates between earns the player a singlepoint.
+    I have used HTML canvas and JS to implement ﬂappy bird.
+
+Front end
+
+    It is a basic webpage made using HTML and Bootstrap4.
+    The navbar consists of a Home, Leaderboard and Dropdown link.
+    On opening the page the user is greeted with the title of our project along with an explore button which redirects the user to the bottom of the page which consists of the description of our games. 
+    These descriptions are linked to our games and the user is taken to the game on clicking on the Play Now. 
