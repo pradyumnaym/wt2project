@@ -7,11 +7,11 @@ const Game = require(path.join("..", "models", "Game.js"));
 const User = require(path.join("..", "models", "User.js"));
 const Request = require(path.join("..", "models", "Request.js"));
 
-var Feed = require('rss-to-json');
-var feeds;
-Feed.load('https://www.gamespot.com/feeds/game-news/', function(err, rss){
-   feeds = rss;
-});
+// var Feed = require('rss-to-json');
+// var feeds;
+// Feed.load('https://www.gamespot.com/feeds/game-news/', function(err, rss){
+//    feeds = rss;
+// });
 
 api.post("/getboard", (req, res) => {
   Game.getGameById(req.body.code, (err, board) => {

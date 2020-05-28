@@ -9,7 +9,7 @@ const images = require(path.join(__dirname, "routes", "imageRouter.js"))
 const verifyToken = require(path.join(__dirname, "jwt", "verifyToken.js"));
 const Request = require(path.join(__dirname, "models", "Request.js"))
 const msg = require(path.join(__dirname, "routes", "messageRouter.js"))
-
+mongoose.set('useCreateIndex', true);
 mongoose.connect(
   "mongodb+srv://pradyumnaym:password@123@cluster0-rmlwr.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true },
@@ -48,3 +48,5 @@ app.use("/images", images);
 app.use("/chat", verifyToken, msg);
 
 app.listen(4000);
+
+module.exports = app;

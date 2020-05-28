@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon --ignore imageprocessing/data.json index.js"
+    "serve": "nodemon --ignore imageprocessing/data.json index.js",
+    "test": "mocha --exit"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,11 @@
     "uuid": "^7.0.3"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-json-pattern": "^1.1.0",
     "lite-server": "^2.5.4",
-    "nodemon": "^1.19.4"
+    "mocha": "^7.2.0",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
   }
 }

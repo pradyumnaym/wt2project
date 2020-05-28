@@ -88,7 +88,7 @@ router.get("/profile/:username", verifyToken, (req, res)=>{
 });
 
 router.post("/friendslist", verifyToken, (req, res)=>{
-  console.log(req.body);
+  //console.log(req.body);
   User.getUserByUserName(req.body.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
@@ -115,6 +115,8 @@ router.post("/sendrequest", verifyToken, (req, res) =>{
     if(user["friendrequests"].indexOf(req.user.username) == -1) {
       user["friendrequests"].push(req.user.username);
       user.markModified("friendrequests");
+    }else{
+      return res.sendStatus(201);
     }
     user.save(err=>console.log(err));
     return res.status(200).json({});

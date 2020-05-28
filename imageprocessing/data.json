@@ -1,8 +1,9 @@
 [
       {
             "username": "anushkini1",
-            "img": "5e974fa352ef45410a4fbba2",
+            "img": "5e9852509784d8195ce83492",
             "friends": [
+                  "anushkini3",
                   "anushkini2"
             ]
       },
@@ -10,12 +11,41 @@
             "username": "anushkini2",
             "img": "5e974fbc52ef45410a4fbba4",
             "friends": [
-                  "anushkini1"
+                  "anushkini1",
+                  "anushkini4",
+                  "anushkini3",
+                  "pradyumnaym"
             ]
       },
       {
             "username": "tester1",
             "img": "5e9782d020259700ecd8966a",
             "friends": []
+      },
+      {
+            "username": "anushkini3",
+            "img": "5e983a0479e8dd3d8f43d6c0",
+            "friends": [
+                  "anushkini4",
+                  "anushkini1",
+                  "pradyumnaym",
+                  "anushkini2"
+            ]
+      },
+      {
+            "username": "anushkini4",
+            "img": "5e983a2479e8dd3d8f43d6c2",
+            "friends": [
+                  "anushkini3",
+                  "anushkini2"
+            ]
+      },
+      {
+            "username": "pradyumnaym",
+            "img": "5e983a9e79e8dd3d8f43d6c4",
+            "friends": [
+                  "anushkini3",
+                  "anushkini2"
+            ]
       }
 ]
