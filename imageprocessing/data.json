@@ -1,21 +1,144 @@
 [
-      {
-            "username": "anushkini1",
-            "img": "5e974fa352ef45410a4fbba2",
-            "friends": [
-                  "anushkini2"
-            ]
-      },
-      {
-            "username": "anushkini2",
-            "img": "5e974fbc52ef45410a4fbba4",
-            "friends": [
-                  "anushkini1"
-            ]
-      },
-      {
-            "username": "tester1",
-            "img": "5e9782d020259700ecd8966a",
-            "friends": []
-      }
+  {
+    "username": "anushkini1",
+    "img": "5e9852509784d8195ce83492",
+    "friends": [
+      "anushkini3",
+      "anushkini2"
+    ]
+  },
+  {
+    "username": "anushkini2",
+    "img": "5e985ce034a5be35a0ee648d",
+    "friends": [
+      "anushkini1",
+      "anushkini4",
+      "anushkini3",
+      "pradyumnaym"
+    ]
+  },
+  {
+    "username": "tester1",
+    "img": "5e9782d020259700ecd8966a",
+    "friends": [
+      "pradyumnaym"
+    ]
+  },
+  {
+    "username": "anushkini3",
+    "img": "5e98613234a5be35a0ee648e",
+    "friends": [
+      "anushkini4",
+      "anushkini1",
+      "pradyumnaym",
+      "anushkini2"
+    ]
+  },
+  {
+    "username": "anushkini4",
+    "img": "5e985cb734a5be35a0ee648c",
+    "friends": [
+      "anushkini3",
+      "anushkini2"
+    ]
+  },
+  {
+    "username": "pradyumnaym",
+    "img": "5e983a9e79e8dd3d8f43d6c4",
+    "friends": [
+      "anushkini3",
+      "anushkini2",
+      "tester1"
+    ]
+  },
+  {
+    "username": "user1",
+    "friends": [
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2"
+    ]
+  },
+  {
+    "username": "user2",
+    "friends": [
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1"
+    ]
+  }
 ]
