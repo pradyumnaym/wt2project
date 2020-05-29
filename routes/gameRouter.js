@@ -1,7 +1,7 @@
 const express = require('express');
 const api = express.Router();
 const path = require("path");
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuid').v4;
 
 const Game = require(path.join("..", "models", "Game.js"));
 const User = require(path.join("..", "models", "User.js"));
@@ -32,7 +32,7 @@ api.post("/setboard", (req, res) => {
 });
 
 api.post('/sendrequest', (req, res)=>{
-  if(!req.body.username) return sendStatus(400);
+  if(!req.body.username) return res.sendStatus(400);
   User.getUserByUserName(req.user.username, (err, user) =>{
     if(err) return res.sendStatus(500);
     if(!user) return res.sendStatus(404);
@@ -46,17 +46,18 @@ api.post('/sendrequest', (req, res)=>{
     Request.addRequest(request, (err, requestobj)=>{
       if(err) throw err;
       user.gamerequests.push(requestobj.reqid);
-      user.markModified("gamerequests");
       user.save();
-      User.getUserByUserName(req.body.username, (err, user) =>{
+      User.getUserByUserName(req.body.username, (err, user1) =>{
         if(err) return res.sendStatus(500);
-        if(!user) return res.sendStatus(404);
-        user.gamerequests.push(requestobj.reqid);
+        if(!user1) return res.sendStatus(404);
+        user1.gamerequests.push(requestobj.reqid);
         user.markModified("gamerequests");
-        user.save();
+        user1.markModified("gamerequests");
+        user1.save();
+         return res.status(200).json([]);
+
       });
     })
-    return res.status(200).json([]);
   });
 });
 

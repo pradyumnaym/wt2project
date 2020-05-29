@@ -130,15 +130,16 @@ router.post("/addfriend", verifyToken, (req, res) =>{
     if(!user) return res.sendStatus(404);
     user["friends"].push(req.body.username);
     user['friendrequests'].splice(user['friendrequests'].indexOf(req.body.username), 1)
-    user.markModified("friends");
-    user.markModified("friendrequests");
+    
     user.save(err=>console.log(err));
     User.getUserByUserName(req.body.username, (err, sender) =>{
       if(err) return res.sendStatus(500);
       if(!sender) return res.sendStatus(404);
+      user.markModified("friends");
+      user.markModified("friendrequests");
       sender["friends"].push(req.user.username);
       sender.markModified("friends");
-      sender.save(err=> console.log(err));
+      sender.save(err=> {});
       return res.status(200).json({});
     });
   });
@@ -151,7 +152,7 @@ router.post("/rejectrequest", verifyToken, (req, res) =>{
     if(!user) return res.sendStatus(404);
     user['friendrequests'].splice(user['friendrequests'].indexOf(req.body.username), 1)
     user.markModified("friendrequests");
-    user.save(err=>console.log(err));
+    user.save(err=>{});
     return res.status(200).json({});
   });
 });
@@ -163,7 +164,7 @@ router.post("/addfacebook", verifyToken, (req, res) => {
     if(!user) return res.sendStatus(404);
     user["facebook"] = req.body.link;
     user.markModified("facebook");
-    user.save(err=>console.log(err));
+    user.save(err=>{});
     return res.status(200).json({});
   });
 });
@@ -175,7 +176,7 @@ router.post("/addtwitter", verifyToken, (req, res) => {
     if(!user) return res.sendStatus(404);
     user["twitter"] = req.body.link;
     user.markModified("twitter");
-    user.save(err=>console.log(err));
+    user.save(err=>{});
     return res.status(200).json({});
   });
 });
@@ -187,7 +188,7 @@ router.post("/addsummary", verifyToken, (req, res) => {
     if(!user) return res.sendStatus(404);
     user["summary"] = req.body.text;
     user.markModified("summary");
-    user.save(err=>console.log(err));
+    user.save(err=>{});
     return res.status(200).json({});
   });
 });
@@ -269,8 +270,10 @@ router.delete('/gamerequests', verifyToken, (req, res) =>{
 router.post('/usersimilarity', verifyToken, (req, res)=>{
   if(!req.body.username) return res.sendStatus(400);
   User.getUserByUserName(req.user.username, (err, user)=>{
+    if(!user)return res.sendStatus(404);
     if(err) throw err;
     User.getUserByUserName(req.body.username, (err, user1)=>{
+      if(!user1)return res.sendStatus(404);
       if(err) throw err;
       return res.status(200).json([cosinesimilarity(user.gamesarray, user1.gamesarray)]);
     });

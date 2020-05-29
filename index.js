@@ -31,7 +31,6 @@ app.get('/request/:reqid', verifyToken, (req, res)=>{
     return res.status(200).json({reqid, from, to, accepted});
   })
 })
-//app.use(express.urlencoded({ extended: false }));
 
 //use bodyparser middleware only if it is not of MIME type multipart*
 var isMultipart = /^multipart\//i;

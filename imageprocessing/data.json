@@ -4,7 +4,8 @@
     "img": "5e9852509784d8195ce83492",
     "friends": [
       "anushkini3",
-      "anushkini2"
+      "anushkini2",
+      "user2"
     ]
   },
   {
@@ -53,7 +54,18 @@
   },
   {
     "username": "user1",
+    "img": "5ecffbe52ad79d4e42c9b519",
     "friends": [
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
+      "user2",
       "user2",
       "user2",
       "user2",
@@ -99,6 +111,17 @@
   {
     "username": "user2",
     "friends": [
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
+      "user1",
       "user1",
       "user1",
       "user1",
