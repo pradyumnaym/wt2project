@@ -111,7 +111,7 @@ class SearchText(unittest.TestCase):
 
         self.assertEqual(search_result[0:len("tester2")], "tester2")
 
-    def test_search_invalid(self):
+    def utest_search_invalid(self):
 
         self.driver.get("http://localhost:4200/search/1")
         search_field = self.driver.find_element_by_id("username")
@@ -130,6 +130,34 @@ class SearchText(unittest.TestCase):
 
 
         self.assertEqual(f,0)
+
+    def utest_friends(self):
+
+        self.driver.get("http://localhost:4200/friends/")
+        friends = self.driver.find_element_by_xpath("//button[@class = 'btn']")
+        friends_name = self.driver.find_element_by_xpath("//span[@class = 'friendName']").text
+        friends.click()
+
+        self.driver.switch_to_window(self.driver.window_handles[-1])
+        time.sleep(1)
+        url_redirect = self.driver.current_url
+        self.assertEqual(url_redirect, "http://localhost:4200/search/"+friends_name)
+
+    def utest_friends(self):
+
+        self.driver.get("http://localhost:4200/friends/")
+        friends = self.driver.find_element_by_xpath("//button[@class = 'btn']")
+        friends_name = self.driver.find_element_by_xpath("//span[@class = 'friendName']").text
+        friends.click()
+
+        self.driver.switch_to_window(self.driver.window_handles[-1])
+        time.sleep(1)
+        url_redirect = self.driver.current_url
+        self.assertEqual(url_redirect, "http://localhost:4200/search/"+friends_name)
+        
+
+
+        
 
         
 
