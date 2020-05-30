@@ -24,13 +24,13 @@ class SearchText(unittest.TestCase):
         time.sleep(2)
         self.driver.get("http://localhost:4200/home/")
 
-    def utest_home_after_login(self):
+    def test_home_after_login(self):
        
         k = self.driver.find_elements_by_xpath("//app-header/div/ul/li")
         #print("see:-   ",len(k))
         self.assertEqual(len(k), 8)
 
-    def utest_profile_edits(self):
+    def test_profile_edits(self):
 
         self.driver.get("http://localhost:4200/profile/")
         k = self.driver.find_elements_by_xpath("//div[@class='center']/button")
@@ -63,7 +63,7 @@ class SearchText(unittest.TestCase):
         self.assertEqual(url_redirect, "https://www.facebook.com/-"+str(randnum))
 
     
-    def utest_profile_edits(self):
+    def test_profile_edits(self):
 
         self.driver.get("http://localhost:4200/profile/")
         k = self.driver.find_elements_by_xpath("//div[@class='center']/button")
@@ -96,7 +96,7 @@ class SearchText(unittest.TestCase):
         self.assertEqual(url_redirect, "https://www.facebook.com/-"+str(randnum))
 
 
-    def utest_search_valid(self):
+    def test_search_valid(self):
 
         self.driver.get("http://localhost:4200/search/1")
         search_field = self.driver.find_element_by_id("username")
@@ -111,7 +111,7 @@ class SearchText(unittest.TestCase):
 
         self.assertEqual(search_result[0:len("tester2")], "tester2")
 
-    def utest_search_invalid(self):
+    def test_search_invalid(self):
 
         self.driver.get("http://localhost:4200/search/1")
         search_field = self.driver.find_element_by_id("username")
@@ -131,7 +131,7 @@ class SearchText(unittest.TestCase):
 
         self.assertEqual(f,0)
 
-    def utest_friends(self):
+    def test_friends(self):
 
         self.driver.get("http://localhost:4200/friends/")
         friends = self.driver.find_element_by_xpath("//button[@class = 'btn']")
@@ -143,7 +143,7 @@ class SearchText(unittest.TestCase):
         url_redirect = self.driver.current_url
         self.assertEqual(url_redirect, "http://localhost:4200/search/"+friends_name)
 
-    def utest_friends(self):
+    def test_friends(self):
 
         self.driver.get("http://localhost:4200/friends/")
         friends = self.driver.find_element_by_xpath("//button[@class = 'btn']")
@@ -154,6 +154,71 @@ class SearchText(unittest.TestCase):
         time.sleep(1)
         url_redirect = self.driver.current_url
         self.assertEqual(url_redirect, "http://localhost:4200/search/"+friends_name)
+
+
+    def test_logout(self):
+
+        self.driver.get("http://localhost:4200/home/")
+        navs = self.driver.find_elements_by_xpath("//a[@routerlink='/home']")
+        navs[0].click()
+        self.driver.switch_to_window(self.driver.window_handles[-1])
+        time.sleep(1)
+        url_redirect = self.driver.current_url
+        self.assertEqual(url_redirect, "http://localhost:4200/home")
+        k = self.driver.find_elements_by_xpath("//app-header/div/ul/li")
+        #print("see:-   ",len(k))
+        self.assertEqual(len(k), 3)
+
+
+    def test_chess_requests(self):
+
+        self.driver.get("http://localhost:4200/home/")
+        k = self.driver.find_elements_by_xpath("//div[@class='bottomright']")
+       # print("see:-   ",len(k))
+        k[0].click()
+        time.sleep(1)
+
+        friends = self.driver.find_elements_by_xpath("//div[@id='inviteFriends']/div[@class='card']/button")
+        friends_name = self.driver.find_elements_by_xpath("//div[@id='inviteFriends']/div[@class='card']/div[@class='card-title']")
+        print(friends_name[0].text)
+        friends[0].click()
+        password = friends_name[0].text
+        self.driver.get("http://localhost:4200/home/")
+        navs = self.driver.find_elements_by_xpath("//a[@routerlink='/home']")
+        navs[0].click()
+
+
+        self.driver.get("http://localhost:4200/login/")
+
+        self.search_field = self.driver.find_element_by_name("username")
+
+        self.search_field.send_keys(password)
+
+        self.search_field = self.driver.find_element_by_name("password")
+
+        self.search_field.send_keys(password)
+        self.search_field.submit()
+        time.sleep(1)
+        self.driver.get("http://localhost:4200/chessRequests")
+        
+        f = 0
+        try:
+            name = self.driver.find_element_by_xpath("//div[@id='requests']/div[@class='card']/div/div[@class='card-text']").text
+            if("anushkini3" in name):
+                f = 1
+            else:
+                f= 0
+        except:
+            f= 0 
+
+        self.assertEqual(f, 1)
+
+        
+
+
+
+
+        
         
 
 
