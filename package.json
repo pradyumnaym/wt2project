@@ -24,7 +24,7 @@
     "chai": "^4.2.0",
     "chai-json-pattern": "^1.1.0",
     "lite-server": "^2.5.4",
-    "mocha": "^7.2.0",
+    "mocha": "^10.2.0",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2"
   }
